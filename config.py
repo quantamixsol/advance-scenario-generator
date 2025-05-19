@@ -54,6 +54,27 @@ ASSET_CONFIG = {
         "fields": ["instrument","curve_name","rate","currency","tenor","shock"],
         "default_weight": 1.0
     },
+    "CMD":       {"fields": [
+                      "Asset Name",
+                      "Currency",
+                      "Expiry",
+                      "Unit",
+                      "Sector",
+                      "shock"
+                  ],
+                  "default_weight": 1.0},
+
+    # ─── NEW! EQUITY ────────────────────────────────────────────────
+    "EQ":        {"fields": [
+                      "Asset Name",
+                      "Country",
+                      "Sector",
+                      "Liquidity category",
+                      "Rating",
+                      "shock"
+                  ],
+                  "default_weight": 1.0},
+
 }
 
 # ─── SEM Shock-Expansion Methods ─────────────────────────────────────

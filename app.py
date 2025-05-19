@@ -79,74 +79,67 @@ REGION_GROUP = {"Northern America":"NA","Latin America":"LATAM",
                 "Northwest Europe":"EMEA","Southern Europe":"EMEA","AroundAfrica":"EMEA"}
 RATING_SCORE = {"AAA":5,"AA+":4.5,"AA":4,"AA-":3.5,
                 "A+":3,"A":2.5,"A-":2,"BBB+":1.5,"BBB":1,"BB":0.5,"B":0}
-ASSET_CONFIG = {
-    "BOND":      {"fields":["rating","tenor","seniority","sector","region","currency","covered","shock"]},
-    "CDS":       {"fields":["instrument","issuer","currency","seniority","liquidity","maturity","shock"]},
-    "CR":        {"fields":["instrument","issuer","currency","seniority","liquidity","maturity","shock"]},
-    "FXSPOT":    {"fields":["spot","pair","shock"]},
-    "FXVOL":     {"fields":["smile","type","pair","strike","option_type","tenor","shock"]},
-    "IRSWAP":    {"fields":["instrument","curve_name","currency","tenor","shock"]},
-    "IRSWVOL":   {"fields":["method","currency","tenor","shock"]},
-    "IR_LINEAR": {"fields":["instrument","curve_name","rate","currency","tenor","shock"]},
-}
-# uniform default weights
-for cfg in ASSET_CONFIG.values():
-    cfg["weights"] = {fld:1.0 for fld in cfg["fields"]}
+from config import ASSET_CONFIG
 
 # ─── HELPERS ─────────────────────────────────────────────────────────────
 def tenor_to_months(s: str) -> float:
     t = str(s or "").strip().upper()
-    if t=="ON": return 1/30
+    if t == "ON": return 1/30
     m = re.match(r"^(\d+(?:\.\d+)?)([DWMY])$", t)
     if not m: return 0.0
-    v,u = float(m.group(1)), m.group(2)
-    return {"D":1/30,"W":7/30,"M":1,"Y":12}[u]*v
+    v, u = float(m.group(1)), m.group(2)
+    return {"D":1/30,"W":7/30,"M":1,"Y":12}[u] * v
 
 def hybrid_score(px, cd, cfg):
-    tot,ws=0.0,0.0
-    for f,w in cfg["weights"].items():
-        P,C = px.get(f,""), cd.get(f,"")
-        if f=="rating":
-            sc = 1 - abs(RATING_SCORE.get(P,0) - RATING_SCORE.get(C,0)) / 5
-        elif f in ("tenor","maturity"):
-            a,b = tenor_to_months(P), tenor_to_months(C)
-            sc = 1 - abs(a-b)/max(a,b,1)
-        elif f=="region":
-            sc = 1 if P and C and (P==C or REGION_GROUP.get(P)==REGION_GROUP.get(C)) else 0
-        elif f=="shock":
-            sc = 1 if P and P==C else 0
+    tot, ws = 0.0, 0.0
+    for f, w in cfg.get("weights", {}).items():
+        P, C = px.get(f, ""), cd.get(f, "")
+        if f == "rating":
+            sc = 1 - abs(RATING_SCORE.get(P, 0) - RATING_SCORE.get(C, 0)) / 5
+        elif f in ("tenor", "maturity"):
+            a, b = tenor_to_months(P), tenor_to_months(C)
+            sc = 1 - abs(a - b) / max(a, b, 1)
+        elif f == "region":
+            sc = 1 if P and C and (P == C or REGION_GROUP.get(P) == REGION_GROUP.get(C)) else 0
+        elif f == "shock":
+            sc = 1 if P and P == C else 0
         else:
-            sc = 1 if P==C else fuzz.partial_ratio(str(P),str(C)) / 100
-        tot+=w*sc; ws+=w
-    return (tot/ws) if ws else 0.0
+            sc = 1 if P == C else fuzz.partial_ratio(str(P), str(C)) / 100
+        tot += w * sc; ws += w
+    return (tot / ws) if ws else 0.0
 
 @st.cache_data
 def build_fullcode_ann(df: pd.DataFrame):
     idx = faiss.IndexFlatIP(EMBED_DIM)
     if df.empty:
-        return idx, np.zeros((0,EMBED_DIM), dtype="float32")
+        return idx, np.zeros((0, EMBED_DIM), dtype="float32")
     embs = embed_texts(df["original"].fillna("").tolist()).astype("float32")
     idx.add(embs)
     return idx, embs
 
-def parse_row(code: str) -> dict:
+# Enhanced parse_row: handles missing and unknown assets
+def parse_row(code) -> dict:
+    if not isinstance(code, str):
+        return {"asset": "","original": code}
     parts = [p.strip() for p in code.split(":")]
-    if parts[0].upper()=="CR": parts=parts[1:]
-    a0 = parts[0].upper()
-    if a0 in ("CDS","CR"): asset="CDS"
-    elif a0=="BOND": asset="BOND"
-    elif a0=="FXSPOT": asset="FXSPOT"
-    elif a0=="FXVOL": asset="FXVOL"
-    elif a0=="IR" and len(parts)>1 and parts[1].upper()=="SWAP": asset="IRSWAP"
-    elif a0=="IR" and len(parts)>1 and parts[1].upper() in ("SWVOL","SWAPVOL"): asset="IRSWVOL"
-    elif a0=="IR": asset="IR_LINEAR"
-    else: asset=a0
-    out={"asset":asset,"original":code}
-    for i,fld in enumerate(ASSET_CONFIG[asset]["fields"], start=1):
-        out[fld] = parts[i] if i<len(parts) else ""
+    if parts and parts[0].upper() == "CR":
+        parts = parts[1:]
+    a0 = parts[0].upper() if parts else ""
+    if a0 in ("CDS", "CR"): asset = "CDS"
+    elif a0 == "BOND": asset = "BOND"
+    elif a0 == "FXSPOT": asset = "FXSPOT"
+    elif a0 == "FXVOL": asset = "FXVOL"
+    elif a0 == "IR" and len(parts) > 1 and parts[1].upper() == "SWAP": asset = "IRSWAP"
+    elif a0 == "IR" and len(parts) > 1 and parts[1].upper() in ("SWVOL", "SWAPVOL"): asset = "IRSWVOL"
+    elif a0 == "IR": asset = "IR_LINEAR"
+    else: asset = a0
+    out = {"asset": asset, "original": code}
+    fields = ASSET_CONFIG.get(asset, {}).get("fields", [])
+    for i, fld in enumerate(fields, start=1):
+        out[fld] = parts[i] if i < len(parts) else ""
     return out
 
-# ─── PAGE STYLING ─────────────────────────────────────────────────────────
+# ─── PAGE STYLING & LOGO ─────────────────────────────────────────────────
 ING = "#FF6600"
 st.markdown(f"""
 <style>
@@ -154,11 +147,9 @@ st.markdown(f"""
 input[type="range"] {{ accent-color:{ING}; }}
 </style>
 """, unsafe_allow_html=True)
-
-# logo top‐left
 logo = next((p for p in [
-    pathlib.Path(__file__).parent/"Inglogo.jpg",
-    pathlib.Path.cwd()/"Inglogo.jpg"
+    pathlib.Path(__file__).parent / "Inglogo.jpg",
+    pathlib.Path.cwd() / "Inglogo.jpg"
 ] if p.exists()), None)
 if logo:
     st.image(str(logo), width=100)
@@ -170,8 +161,7 @@ st.header("1️⃣ Scenario Narrative")
 if "sc" not in st.session_state:
     st.session_state.sc = {}
 sc = st.session_state.sc
-
-sc["name"]     = st.text_input("Name", sc.get("name",""))
+sc["name"]     = st.text_input("Name", sc.get("name", ""))
 sc["type"]     = st.selectbox("Type",
     ["Historical","Hypothetical","Ad-hoc"],
     index=["Historical","Hypothetical","Ad-hoc"].index(sc.get("type","Historical"))
@@ -185,17 +175,14 @@ sc["assets"]   = st.multiselect("Asset Classes",
     default=sc.get("assets", list(ASSET_CONFIG.keys()))
 )
 
-# narrative engine
 nar_eng = st.selectbox("Narrative Engine",
     ["t5-small","t5-base","gpt-4","gemini-2.5"], index=0
 )
-
-n0 = sc.get("narrative","")
+n0 = sc.get("narrative", "")
 n1 = st.text_area("Freeform Narrative", n0, height=120)
 if st.button("🔄 Generate Narrative"):
     sc["narrative"] = generate_narrative(
-        sc["name"], sc["type"], sc["assets"],
-        sc["severity"], n1, nar_eng
+        sc["name"], sc["type"], sc["assets"], sc["severity"], n1, nar_eng
     )
     st.success("Narrative generated.")
 st.text_area("Scenario Narrative", sc.get("narrative",""), height=200)
@@ -203,21 +190,16 @@ st.session_state.sc = sc
 
 # ─── 2️⃣ Upload & Parse ────────────────────────────────────────────────
 st.header("2️⃣ Upload Proxy & Universe")
-c1,c2 = st.columns(2)
-with c1:
-    pf = st.file_uploader("Proxy CSV", type="csv")
-with c2:
-    uf = st.file_uploader("Universe CSV", type="csv")
+pf = st.file_uploader("Proxy CSV", type="csv")
+uf = st.file_uploader("Universe CSV", type="csv")
 
 if pf and uf:
-    px_df = pd.json_normalize(
-        pd.read_csv(pf, header=None, names=["code"])["code"]
-        .apply(parse_row)
-    )
-    un_df = pd.json_normalize(
-        pd.read_csv(uf, header=None, names=["code"])["code"]
-        .apply(parse_row)
-    )
+    # ensure 'code' always read as str and disable low memory
+    px_codes = pd.read_csv(pf, header=None, names=["code"], dtype={"code": str}, low_memory=False)["code"]
+    un_codes = pd.read_csv(uf, header=None, names=["code"], dtype={"code": str}, low_memory=False)["code"]
+
+    px_df = pd.json_normalize(px_codes.apply(parse_row))
+    un_df = pd.json_normalize(un_codes.apply(parse_row))
     st.success("Parsed Proxy & Universe")
 
     # ─── 3️⃣ Extract RFs ─────────────────────────────────────────────
@@ -233,8 +215,8 @@ if pf and uf:
         idx_full, emb_full = build_fullcode_ann(pool)
         qn = embed_texts([narrative]).astype("float32")
         k  = st.slider("How many factors?", 1, min(50, len(pool)), 5)
-        D,I = idx_full.search(qn, k)
-        inds = [i for i in I[0] if i < len(pool)]
+        D, I = idx_full.search(qn, k)
+        inds = [i for i in I[0] if 0 <= i < len(pool)]
         rf = pool.iloc[inds].copy()
         rf["sim"]       = D[0][:len(inds)]
         rf["shock_pct"] = {"Low":1,"Medium":5,"High":10,"Extreme":20}[sc["severity"]]
@@ -272,30 +254,37 @@ if pf and uf:
 
         # ─── 5️⃣ Propagate to Proxies ───────────────────────────
         st.subheader("5️⃣ Map to Proxies")
-        α  = st.sidebar.slider("Blend α",   0.0, 1.0, 0.6, 0.05)
+        α = st.sidebar.slider("Blend α", 0.0, 1.0, 0.6, 0.05)
         tk = st.sidebar.slider("ANN top_k", 1, 50, 10, 1)
 
         def two_stage(px, univ, cfg):
-            idx,fe = build_fullcode_ann(univ)
-            q       = embed_texts([px["original"]]).astype("float32")
-            D,I     = idx.search(q, tk)
-            valid   = [i for i in I[0] if i < len(univ)]
-            cand    = univ.iloc[valid].reset_index(drop=True)
-            h       = cand.apply(lambda r: hybrid_score(px, r, cfg), axis=1).to_numpy()
-            s       = (fe[I[0]] @ q[0]).flatten() if fe.shape[0]>0 else np.zeros_like(h)
-            comb    = α*h + (1-α)*s
-            best    = int(np.nanargmax(comb))
-            return cand.loc[best,"original"], float(comb[best])
+            # early exit for empty universe
+            if univ.empty:
+                return "", 0.0
+            idx, fe = build_fullcode_ann(univ)
+            q = embed_texts([px.get("original", "")]).astype("float32")
+            D, I = idx.search(q, tk)
+            valid = [i for i in I[0] if 0 <= i < len(univ)]
+            if not valid:
+                return "", 0.0
+            cand = univ.iloc[valid].reset_index(drop=True)
+            h = cand.apply(lambda r: hybrid_score(px, r, cfg), axis=1).to_numpy()
+            s = (fe[I[0]] @ q[0]).flatten() if fe.shape[0] > 0 else np.zeros_like(h)
+            comb = α * h + (1 - α) * s
+            if comb.size == 0:
+                return "", 0.0
+            best = int(np.nanargmax(comb))
+            return cand.loc[best, "original"], float(comb[best])
 
         out = []
         for _, r in rf.iterrows():
-            subset = px_df[px_df.asset==r.asset].reset_index(drop=True)
-            best,scv = two_stage(pd.Series(parse_row(r.original)), subset, ASSET_CONFIG[r.asset])
+            subset = px_df[px_df.asset == r.asset].reset_index(drop=True)
+            best, scv = two_stage(r, subset, ASSET_CONFIG.get(r.asset, {}))
             out.append({
                 "asset":      r.asset,
                 "factor":     r.original,
                 "proxy":      best,
-                "score":      round(scv,4),
+                "score":      round(scv, 4),
                 "shock_pct":  r.shock_pct
             })
         dfp = pd.DataFrame(out)
