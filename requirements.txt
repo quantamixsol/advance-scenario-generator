@@ -1,0 +1,12 @@
+streamlit
+transformers 
+sentence-transformers 
+scikit-learn
+torch 
+faiss-cpu 
+rapidfuzz 
+scikit-learn 
+plotly 
+openai 
+google-generativeai
+vertexai

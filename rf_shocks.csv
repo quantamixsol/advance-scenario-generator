@@ -1,0 +1,6 @@
+asset,original,instrument,curve_name,rate,currency,tenor,shock,issuer,seniority,liquidity,maturity,method,smile,type,pair,strike,option_type,spot,sim,shock_pct
+IR_LINEAR,IR:SWAP:EDNSA:RATE:NZD:25Y,SWAP,EDNSA,RATE,NZD,25Y,,,,,,,,,,,,,0.89026153,5
+IR_LINEAR,IR:SWAP:EDNSA:RATE:NZD:30Y,SWAP,EDNSA,RATE,NZD,30Y,,,,,,,,,,,,,0.8895225,5
+IR_LINEAR,IR:SWAP:EDNSA:RATE:HUF:25Y,SWAP,EDNSA,RATE,HUF,25Y,,,,,,,,,,,,,0.889491,5
+IR_LINEAR,IR:SWAP:EDNSA:RATE:MYR:25Y,SWAP,EDNSA,RATE,MYR,25Y,,,,,,,,,,,,,0.8890861,5
+IR_LINEAR,IR:IYC:RPUGS:RATE:USD:50Y,IYC,RPUGS,RATE,USD,50Y,,,,,,,,,,,,,0.88819027,5
