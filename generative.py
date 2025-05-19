@@ -98,14 +98,16 @@ def explain_factors(narrative: str, factors: list[dict],
                 f"Scenario Narrative:\n{narrative}\n\n"
                 f"Why is '{f['original']}' a key risk factor? One sentence."
             )
-            resp = openai.ChatCompletion.create(
-                model="gpt-4",
-                messages=[
+
+            resp = OPENAI_CLIENT.chat.completions.create(
+            model="gpt-4o",
+            messages=[
                     {"role":"system","content":"You are a financial risk scenario expert."},
                     {"role":"user","content":p}
                 ],
-                temperature=0.7
-            )
+            temperature=0.7
+        )
+
             results.append(resp.choices[0].message.content.strip())
     elif engine == "gemini-2.5":
         for f in factors:
