@@ -10,3 +10,4 @@ plotly
 openai 
 google-generativeai
 vertexai
+dotenv
