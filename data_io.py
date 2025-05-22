@@ -34,9 +34,6 @@ for cfg in ASSET_CONFIG.values():
 # ─── PARSING LOGIC ──────────────────────────────────────────────────────
 def parse_row(code: str) -> dict:
     parts = [p.strip() for p in code.split(":")]
-    # drop leading 'CR'
-    if parts and parts[0].upper()=="CR":
-        parts = parts[1:]
     a0 = parts[0].upper()
     if a0 in ("CDS","CR"):
         asset = "CDS"

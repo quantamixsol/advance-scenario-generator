@@ -148,7 +148,6 @@ def build_fullcode_ann(df: pd.DataFrame):
 
 def parse_row(code: str) -> dict:
     parts = [p.strip() for p in code.split(":")]
-    if parts[0].upper()=="CR": parts=parts[1:]
     a0 = parts[0].upper()
     if a0 in ("CDS","CR"): asset="CDS"
     elif a0=="BOND": asset="BOND"
