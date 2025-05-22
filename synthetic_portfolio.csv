@@ -1,0 +1,21 @@
+Ticker Symbol,Qty,Last Price,Description
+AAPL US,150,178.5,Apple Inc equity
+MSFT,80,310.2,Microsoft Corp equity
+GOOGL US,65,2802.0,Alphabet Class A equity
+AMZN,40,132.5,Amazon.com equity
+TSLA,70,240.1,Tesla Inc equity
+BRK.B,30,355.3,Berkshire Hathaway Class B
+JPM,120,145.6,JPMorgan Chase & Co
+USDJPY,100000,0.0073,FX Spot USD/JPY
+EURUSD,80000,1.12,FX Spot EUR/USD
+XAUUSD,50,1950.0,Gold spot
+CL1,100,85.4,WTI crude futures
+TY1,80,112.6,US 10y Treasury futures
+BTCUSD,1.5,30000.0,Bitcoin position
+USGG10YR,200000,0.041,U.S. 10y yield swap
+EEM,250,40.5,EEM ETF exposure
+SX5E,100,4200.0,EuroStoxx index future
+HG1,70,4.1,Copper futures
+LCOc1,60,88.6,Brent crude futures
+AUDUSD,90000,0.66,FX Spot AUD/USD
+EMB,150,87.2,Emerging markets bond ETF
