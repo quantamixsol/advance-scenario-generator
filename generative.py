@@ -24,7 +24,12 @@ OPENAI_CLIENT = OpenAI()
 
 GEMINI_PRO_MODEL = "gemini-2.5-pro-preview-03-25"
 
-os.environ["GOOGLE_APPLICATION_CREDENTIALS"]="./credentials.json"
+# If credentials are provided via the environment ensure the Vertex
+# SDK sees them. This allows keeping the credential file outside the
+# repository.
+cred_path = os.getenv("VERTEXAI_CREDENTIALS")
+if cred_path:
+    os.environ["GOOGLE_APPLICATION_CREDENTIALS"] = cred_path
 
 def _tenor_to_months(s: str) -> float:
     """
