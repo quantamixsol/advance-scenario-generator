@@ -122,6 +122,7 @@ def explain_factors(narrative: str, factors: list[dict],
                 temperature=0.7,
                 max_tokens=64
             )
+
             results.append(resp.choices[0].message.content.strip())
 
     else:  # gemini
