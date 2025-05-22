@@ -2,7 +2,7 @@ import argparse
 import pandas as pd
 from portfolio import PortfolioIngestor, RiskFactorMapper
 from data_io import parse_df
-from exposures import apply_shocks
+from exposures import apply_shocks, asset_pnl_breakdown
 from config import SHOCK_UNITS, BASELINE_SHOCKS
 
 
@@ -33,7 +33,8 @@ def run_pipeline(portfolio: str, universe: str, severity: str = "Medium") -> pd.
     rf_df = _baseline_shocks(rf_df, severity)
 
     pnl_df = apply_shocks(mapped, rf_df)
-    return pnl_df
+    pnl_breakdown = asset_pnl_breakdown(pnl_df)
+    return pnl_df, pnl_breakdown
 
 
 def main() -> None:
@@ -46,9 +47,11 @@ def main() -> None:
     p.add_argument("--output", default="scenario_pnl.csv", help="Output CSV path")
     args = p.parse_args()
 
-    pnl = run_pipeline(args.portfolio, args.universe, args.severity)
+    pnl, breakdown = run_pipeline(args.portfolio, args.universe, args.severity)
     pnl.to_csv(args.output, index=False)
+    breakdown.to_csv("asset_pnl.csv", index=False)
     print(f"Saved scenario PnL to {args.output} ({len(pnl)} rows)")
+    print("Asset-class breakdown saved to asset_pnl.csv")
 
 
 if __name__ == "__main__":
