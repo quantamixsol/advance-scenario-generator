@@ -54,27 +54,14 @@ ASSET_CONFIG = {
         "fields": ["instrument","curve_name","rate","currency","tenor","shock"],
         "default_weight": 1.0
     },
-    "CMD":       {"fields": [
-                      "Asset Name",
-                      "Currency",
-                      "Expiry",
-                      "Unit",
-                      "Sector",
-                      "shock"
-                  ],
-                  "default_weight": 1.0},
-
-    # ─── NEW! EQUITY ────────────────────────────────────────────────
-    "EQ":        {"fields": [
-                      "Asset Name",
-                      "Country",
-                      "Sector",
-                      "Liquidity category",
-                      "Rating",
-                      "shock"
-                  ],
-                  "default_weight": 1.0},
-
+    "EQ": {
+        "fields": ["symbol","sector","region","shock"],
+        "default_weight": 1.0
+    },
+    "CMD": {
+        "fields": ["commodity","region","price","shock"],
+        "default_weight": 1.0
+    },
 }
 
 # ─── SEM Shock-Expansion Methods ─────────────────────────────────────
@@ -108,3 +95,33 @@ def default_weights():
         asset: { fld: cfg["default_weight"] for fld in cfg["fields"] }
         for asset, cfg in ASSET_CONFIG.items()
     }
+
+# How we interpret “shock_pct” for each class:
+SHOCK_UNITS = {
+    "BOND":      "bps",
+    "CDS":       "bps",
+    "CR":        "bps",
+    "IRSWAP":    "bps",
+    "IRSWVOL":   "bps",
+    "IR_LINEAR": "bps",
+    "FXSPOT":    "pct",
+    "FXVOL":     "pct",
+    "EQ":        "pct",
+    "CMD":       "pct"
+}
+
+# Two separate baseline tables:
+BASELINE_SHOCKS = {
+    "bps": {
+        "Low":     5,     # 5 bps
+        "Medium": 25,     # 25 bps
+        "High":   75,     # 75 bps
+        "Extreme":200     # 200 bps
+    },
+    "pct": {
+        "Low":     0.5,   # 0.5%
+        "Medium":  2.5,   # 2.5%
+        "High":    7.5,   # 7.5%
+        "Extreme":20.0   # 20%
+    }
+}

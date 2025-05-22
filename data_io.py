@@ -24,25 +24,8 @@ ASSET_CONFIG = {
     "IRSWAP":    {"fields":["instrument","curve_name","currency","tenor","shock"]},
     "IRSWVOL":   {"fields":["method","currency","tenor","shock"]},
     "IR_LINEAR": {"fields":["instrument","curve_name","rate","currency","tenor","shock"]},
-    "CMD":       {"fields": [
-                      "Asset Name",
-                      "Currency",
-                      "Expiry",
-                      "Unit",
-                      "Sector",
-                      "shock"
-                  ]},
-
-    # ─── NEW! EQUITY ────────────────────────────────────────────────
-    "EQ":        {"fields": [
-                      "Asset Name",
-                      "Country",
-                      "Sector",
-                      "Liquidity category",
-                      "Rating",
-                      "shock"
-                  ]},
-
+    "EQ":       {"fields":["symbol","sector","region","shock"]},
+    "CMD":      {"fields":["commodity","region","price","shock"]},
 }
 # fill in default weight=1.0 for every field
 for cfg in ASSET_CONFIG.values():
@@ -69,14 +52,14 @@ def parse_row(code: str) -> dict:
         asset = "IRSWVOL"
     elif a0=="IR":
         asset = "IR_LINEAR"
-    elif a0 == "CMD":      # new
-        asset = "CMD"
-    elif a0 == "EQ":       # new
+    elif a0=="EQ":
         asset = "EQ"
-    
+    elif a0=="CMD":
+        asset = "CMD"
     else:
         asset = a0
     out = {"asset": asset, "original": code}
+    # now unpack each field in order
     for i, fld in enumerate(ASSET_CONFIG.get(asset, {})["fields"], start=1):
         out[fld] = parts[i] if i < len(parts) else ""
     return out
