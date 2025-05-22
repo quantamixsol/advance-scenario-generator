@@ -16,7 +16,7 @@ except:
     pass
 
 import streamlit as st
-st.set_page_config(page_title="🔍 Scenario Generator v27", layout="wide")
+st.set_page_config(page_title="🔍 Scenario Generator v28", layout="wide")
 
 import pandas as pd
 import numpy as np
@@ -30,7 +30,9 @@ from sentence_transformers import SentenceTransformer
 from generative import generate_narrative, explain_factors
 from generative import refine_shocks_with_llm
 from portfolio import PortfolioIngestor, RiskFactorMapper
-from exposures import apply_shocks
+from exposures import apply_shocks, asset_pnl_breakdown, validate_parallel_shocks
+from data_io import parse_row
+from matching import hybrid_score, build_fullcode_ann as _build_fullcode_ann
 
 # ─── pull all your global lookups & defaults from config.py ──────────────
 from config import (
@@ -110,57 +112,11 @@ else:
 # ─── inject default weights into each ASSET_CONFIG entry ─────────────────
 for asset, weights in default_weights().items():
     ASSET_CONFIG[asset]["weights"] = weights
-# ─── HELPERS ─────────────────────────────────────────────────────────────
-def tenor_to_months(s: str) -> float:
-    t = str(s or "").strip().upper()
-    if t=="ON": return 1/30
-    m = re.match(r"^(\d+(?:\.\d+)?)([DWMY])$", t)
-    if not m: return 0.0
-    v,u = float(m.group(1)), m.group(2)
-    return {"D":1/30,"W":7/30,"M":1,"Y":12}[u]*v
 
-def hybrid_score(px, cd, cfg):
-    tot,ws=0.0,0.0
-    for f,w in cfg["weights"].items():
-        P,C = px.get(f,""), cd.get(f,"")
-        if f=="rating":
-            sc = 1 - abs(RATING_SCORE.get(P,0) - RATING_SCORE.get(C,0)) / 5
-        elif f in ("tenor","maturity"):
-            a,b = tenor_to_months(P), tenor_to_months(C)
-            sc = 1 - abs(a-b)/max(a,b,1)
-        elif f=="region":
-            sc = 1 if P and C and (P==C or REGION_GROUP.get(P)==REGION_GROUP.get(C)) else 0
-        elif f=="shock":
-            sc = 1 if P and P==C else 0
-        else:
-            sc = 1 if P==C else fuzz.partial_ratio(str(P),str(C)) / 100
-        tot+=w*sc; ws+=w
-    return (tot/ws) if ws else 0.0
-
+# cache FAISS ANN indices per DataFrame
 @st.cache_data
 def build_fullcode_ann(df: pd.DataFrame):
-    idx = faiss.IndexFlatIP(EMBED_DIM)
-    if df.empty:
-        return idx, np.zeros((0,EMBED_DIM), dtype="float32")
-    embs = embed_texts(df["original"].fillna("").tolist()).astype("float32")
-    idx.add(embs)
-    return idx, embs
-
-def parse_row(code: str) -> dict:
-    parts = [p.strip() for p in code.split(":")]
-    a0 = parts[0].upper()
-    if a0 in ("CDS","CR"): asset="CDS"
-    elif a0=="BOND": asset="BOND"
-    elif a0=="FXSPOT": asset="FXSPOT"
-    elif a0=="FXVOL": asset="FXVOL"
-    elif a0=="IR" and len(parts)>1 and parts[1].upper()=="SWAP": asset="IRSWAP"
-    elif a0=="IR" and len(parts)>1 and parts[1].upper() in ("SWVOL","SWAPVOL"): asset="IRSWVOL"
-    elif a0=="IR": asset="IR_LINEAR"
-    else: asset=a0
-    out={"asset":asset,"original":code}
-    for i,fld in enumerate(ASSET_CONFIG[asset]["fields"], start=1):
-        out[fld] = parts[i] if i<len(parts) else ""
-    return out
+    return _build_fullcode_ann(df, embed_texts)
 
 # ─── PAGE STYLING ─────────────────────────────────────────────────────────
 ING = "#FF6600"
@@ -187,7 +143,7 @@ logo = next((p for p in [
 if logo:
     st.image(str(logo), width=100)
 
-st.title("🔍 Scenario Generator v27")
+st.title("🔍 Scenario Generator v28")
 
 # ─── 0️⃣ Upload & Map Portfolio ────────────────────────────────────────
 st.header("0️⃣ Upload & Map Portfolio")
@@ -309,6 +265,11 @@ if "un_df" in st.session_state:
             sc["severity"],
             engine=shock_engine
         )
+        # enforce curve-wise parallel shifts
+        try:
+            validate_parallel_shocks(rf)
+        except ValueError as e:
+            st.warning(str(e))
 
         # allow inline edits
         if hasattr(st, "data_editor"):
@@ -359,6 +320,7 @@ if "un_df" in st.session_state:
 
         if "mapped_pf" in st.session_state:
             pnl_df = apply_shocks(st.session_state["mapped_pf"], rf)
+            breakdown = asset_pnl_breakdown(pnl_df)
             st.session_state["exposures"] = pnl_df
             st.subheader("📈 Scenario PnL")
             st.metric("Total PnL", f"${pnl_df['pnl'].sum():,.2f}")
@@ -366,6 +328,7 @@ if "un_df" in st.session_state:
                 pnl_df[["ticker", "quantity", "price", "rf_code", "shock_pct", "pnl"]],
                 use_container_width=True,
             )
+            st.bar_chart(breakdown.set_index("asset"))
             st.download_button(
                 "📥 Download PnL",
                 pnl_df.to_csv(index=False).encode("utf-8"),
@@ -373,7 +336,7 @@ if "un_df" in st.session_state:
             )
 
     # ─── 5️⃣ Upload & Load Proxy ──────────────────────────────────────
-    st.header("4️⃣ Upload & Load Proxy")
+    st.header("5️⃣ Upload & Load Proxy")
     prox_file = st.file_uploader("Proxy CSV", type="csv", key="prox_upload")
     if st.button("▶️ Load Proxy"):
         if prox_file is None:
@@ -388,8 +351,8 @@ if "un_df" in st.session_state:
         rf    = st.session_state["rf"]
         px_df = st.session_state["px_df"]
 
-        # ─── 5️⃣ Propagate to Proxies ─────────────────────────────────
-        st.subheader("5️⃣ Map Shocks to Proxies")
+        # ─── 6️⃣ Map Shocks to Proxies ─────────────────────────────────
+        st.subheader("6️⃣ Map Shocks to Proxies")
         α  = st.sidebar.slider("Blend α",   0.0, 1.0, 0.6, 0.05)
         tk = st.sidebar.slider("ANN top_k", 1, 50, 10, 1)
 
