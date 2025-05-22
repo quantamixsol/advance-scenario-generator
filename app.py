@@ -29,6 +29,7 @@ from transformers import AutoTokenizer, AutoModel
 from sentence_transformers import SentenceTransformer
 from generative import generate_narrative, explain_factors
 from generative import refine_shocks_with_llm
+from portfolio import PortfolioIngestor, RiskFactorMapper
 
 # ─── pull all your global lookups & defaults from config.py ──────────────
 from config import (
@@ -187,6 +188,33 @@ if logo:
     st.image(str(logo), width=100)
 
 st.title("🔍 Scenario Generator v27")
+
+# ─── 0️⃣ Upload & Map Portfolio ────────────────────────────────────────
+st.header("0️⃣ Upload & Map Portfolio")
+col1, col2 = st.columns(2)
+with col1:
+    port_file = st.file_uploader("Portfolio (CSV/Excel/JSON)", key="port_up")
+with col2:
+    uni_file_port = st.file_uploader("Universe CSV", type="csv", key="uni_port")
+if st.button("▶️ Map Portfolio → RF"):
+    if not port_file or not uni_file_port:
+        st.warning("Provide both portfolio and universe files.")
+    else:
+        ing = PortfolioIngestor(port_file)
+        pf = ing.get()
+        rawu = pd.read_csv(uni_file_port, header=None, names=["code"])
+        un_df_port = pd.json_normalize(rawu["code"].apply(parse_row))
+        mapper = RiskFactorMapper(un_df_port)
+        mapped = mapper.map(pf)
+        st.session_state.mapped_pf = mapped
+        st.success(f"Mapped {mapped.rf_code.notna().sum()} of {len(mapped)} positions")
+
+if "mapped_pf" in st.session_state:
+    st.subheader("Mapped Portfolio Preview")
+    st.dataframe(st.session_state.mapped_pf, use_container_width=True)
+else:
+    st.info("Upload and map a portfolio to continue.")
+    st.stop()
 
 # ─── 1️⃣ Scenario Narrative ────────────────────────────────────────────
 st.header("1️⃣ Scenario Narrative")
