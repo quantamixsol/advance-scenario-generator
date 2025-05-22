@@ -11,3 +11,13 @@ export VERTEXAI_CREDENTIALS=/path/to/your/service_account.json
 ```
 
 This keeps the credentials file outside the repository.
+
+Alternatively you can use a Streamlit secrets file.  Create
+`.streamlit/secrets.toml` at the project root with a line like:
+
+```toml
+VERTEXAI_CREDENTIALS = "/path/to/your/service_account.json"
+```
+
+When running `streamlit run app.py` the path (or the JSON content itself)
+will be read from this file if the environment variable is not set.

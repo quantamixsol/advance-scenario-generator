@@ -31,15 +31,22 @@ GEMINI_PRO_MODEL = "gemini-2.5-pro-preview-03-25"
 def _configure_vertex_credentials():
     cred = os.getenv("VERTEXAI_CREDENTIALS")
     if not cred and hasattr(st, "secrets"):
-        cred = st.secrets.get("VERTEXAI_CREDENTIALS")
-    if cred:
-        if not os.path.isfile(cred) and cred.strip().startswith("{"):
-            import tempfile
-            tmp = tempfile.NamedTemporaryFile(delete=False, suffix=".json")
-            tmp.write(cred.encode())
-            tmp.close()
-            cred = tmp.name
-        os.environ["GOOGLE_APPLICATION_CREDENTIALS"] = cred
+        try:
+            cred = st.secrets["VERTEXAI_CREDENTIALS"]
+        except Exception:
+            cred = None
+    if not cred:
+        logging.warning(
+            "VERTEXAI_CREDENTIALS not provided; Vertex AI features may fail"
+        )
+        return
+    if not os.path.isfile(cred) and cred.strip().startswith("{"):
+        import tempfile
+        tmp = tempfile.NamedTemporaryFile(delete=False, suffix=".json")
+        tmp.write(cred.encode())
+        tmp.close()
+        cred = tmp.name
+    os.environ["GOOGLE_APPLICATION_CREDENTIALS"] = cred
 
 _configure_vertex_credentials()
 
