@@ -1,0 +1,1000 @@
+CR:CRY:IssuerN:EUR:Subordinated:Medium:5Y:Base
+CR:CRY:IssuerL:JPY:Senior:Low:1Y:Base
+FXVOL:RiskRev:IV:GBPUSD:0.5:Call:1Y:Base
+FXSPOT:0.0068:GBPUSD:Base
+FXVOL:ATM:IV:GBPUSD:1.5:Put:1Y:Base
+BOND:AA:1Y:Subordinated:Utilities:Oceania:GBP:Yes:Base
+EQ:V:Technology:Europe:Base
+BOND:BB:10Y:Senior:Corp:AroundAfrica:EUR:No:Base
+IR:SWVOL:USD:3M
+BOND:AA:5Y:Subordinated:Financial:AroundAfrica:JPY:Yes:Base
+IR:SWVOL:USD:1M
+FXSPOT:0.0068:EURUSD:Base
+IR:SWVOL:GBP:1M
+FXVOL:Butterfly:IV:USDCAD:0.5:Call:3M:Base
+FXVOL:ATM:IV:GBPUSD:1.0:Put:1Y:Base
+FXSPOT:0.8500:AUDUSD:Base
+CDS:CDX:IssuerJ:JPY:Subordinated:Medium:1Y:Base
+IR:SWVOL:GBP:6M
+FXSPOT:0.7500:GBPUSD:Base
+IR:UK-LINEAR:0.02:USD:6M
+CMD:Copper:Asia:150.75:Base
+CR:CRY:IssuerT:JPY:Senior:High:1Y:Base
+FXSPOT:0.7500:GBPUSD:Base
+IR:UK-LINEAR:0.015:USD:10Y
+IR:SWAP:USD-LIBOR:USD:6M
+FXSPOT:130.50:USDCAD:Base
+EQ:WMT:Industrial:Northern America:Base
+EQ:GOOGL:Technology:Asia:Base
+EQ:WMT:Healthcare:Europe:Base
+FXSPOT:0.0068:USDJPY:Base
+BOND:BB:2Y:Subordinated:Industrial:Northern America:JPY:No:Base
+CMD:Gold:Global:150.75:Base
+BOND:AA+:5Y:Subordinated:Financial:Asia:JPY:No:Base
+CMD:Gold:Europe:125.25:Base
+FXVOL:ATM:IV:GBPUSD:1.5:Call:3M:Base
+IR:SWVOL:USD:6M
+FXVOL:Butterfly:Vega:GBPUSD:0.5:Call:1Y:Base
+EQ:BAC:Consumer:Asia:Base
+FXSPOT:130.50:AUDUSD:Base
+EQ:MSFT:Healthcare:Asia:Base
+CDS:Custom:IssuerD:EUR:Senior:Medium:1Y:Base
+CMD:Copper:Europe:150.75:Base
+IR:SWAP:GBP-LIBOR:USD:10Y
+IR:US-LINEAR:0.015:USD:2Y
+CR:CRY:IssuerO:JPY:Subordinated:Medium:1Y:Base
+CMD:Gold:Europe:150.75:Base
+BOND:BBB:20Y:Subordinated:Utilities:Oceania:EUR:Yes:Base
+CR:CRX:IssuerK:GBP:Senior:Low:5Y:Base
+FXVOL:ATM:Vega:USDCAD:0.5:Put:1M:Base
+FXSPOT:1.1000:USDCAD:Base
+IR:SWVOL:USD:1Y
+FXVOL:ATM:Vega:GBPUSD:1.0:Put:1M:Base
+IR:SWVOL:GBP:6M
+IR:EU-LINEAR:0.005:USD:2Y
+IR:UK-LINEAR:0.01:EUR:6M
+EQ:JNJ:Healthcare:Asia:Base
+BOND:BB:2Y:Senior:Utilities:Northwest Europe:JPY:Yes:Base
+FXSPOT:0.7500:EURUSD:Base
+CDS:iTraxx:IssuerG:EUR:Senior:Medium:1Y:Base
+CDS:iTraxx:IssuerI:JPY:Senior:Low:2Y:Base
+IR:SWAP:USD-LIBOR:EUR:6M
+IR:UK-LINEAR:0.01:EUR:1Y
+CR:CRX:IssuerQ:EUR:Subordinated:Medium:5Y:Base
+CR:Custom:IssuerP:GBP:Senior:Medium:5Y:Base
+IR:SWVOL:EUR:1M
+FXSPOT:0.7500:USDCAD:Base
+IR:SWVOL:EUR:1M
+IR:SWAP:EUR-EURIBOR:USD:6M
+IR:SWAP:GBP-LIBOR:EUR:20Y
+IR:SWVOL:GBP:1M
+IR:EU-LINEAR:0.025:EUR:10Y
+EQ:MSFT:Financials:Europe:Base
+FXSPOT:1.1000:EURUSD:Base
+IR:EU-LINEAR:0.025:USD:1Y
+IR:SWAP:EUR-EURIBOR:GBP:20Y
+BOND:AA:6M:Senior:Financial:Northwest Europe:GBP:Yes:Base
+IR:SWVOL:GBP:1M
+FXSPOT:1.1000:AUDUSD:Base
+IR:US-LINEAR:0.01:USD:20Y
+CR:CRX:IssuerN:JPY:Senior:Low:5Y:Base
+BOND:A:10Y:Subordinated:Industrial:AroundAfrica:EUR:No:Base
+CMD:Oil:Europe:100.0:Base
+CR:CRY:IssuerO:JPY:Subordinated:High:5Y:Base
+IR:UK-LINEAR:0.025:EUR:5Y
+CR:Custom:IssuerT:JPY:Senior:Low:5Y:Base
+FXSPOT:1.1000:AUDUSD:Base
+FXVOL:RiskRev:IV:EURUSD:0.5:Put:3M:Base
+CMD:Oil:Global:75.0:Base
+IR:SWVOL:GBP:3M
+FXSPOT:1.1000:EURUSD:Base
+FXSPOT:0.8500:EURUSD:Base
+IR:SWAP:USD-LIBOR:GBP:10Y
+CDS:Custom:IssuerA:GBP:Subordinated:Low:1Y:Base
+CR:Custom:IssuerS:USD:Subordinated:High:10Y:Base
+CDS:CDX:IssuerC:USD:Subordinated:Low:10Y:Base
+CMD:Soybeans:Europe:50.5:Base
+CR:CRY:IssuerN:EUR:Subordinated:Low:10Y:Base
+FXVOL:Butterfly:Vega:USDJPY:1.0:Call:6M:Base
+CMD:Gold:Europe:150.75:Base
+EQ:BAC:Industrial:Northern America:Base
+CR:CRX:IssuerL:EUR:Subordinated:High:10Y:Base
+IR:SWVOL:EUR:1M
+IR:SWAP:USD-LIBOR:USD:10Y
+CR:CRX:IssuerN:JPY:Senior:Low:5Y:Base
+CR:CRX:IssuerM:USD:Senior:Low:5Y:Base
+BOND:A+:20Y:Subordinated:Financial:Latin America:GBP:No:Base
+CMD:Copper:Northern America:150.75:Base
+IR:SWAP:USD-LIBOR:GBP:1Y
+FXVOL:ATM:Vega:GBPUSD:0.5:Put:1Y:Base
+FXVOL:Butterfly:Vega:EURUSD:2.0:Call:6M:Base
+EQ:WMT:Industrial:Northern America:Base
+CR:Custom:IssuerK:USD:Senior:High:2Y:Base
+BOND:AA+:20Y:Subordinated:Utilities:Northern America:GBP:Yes:Base
+IR:US-LINEAR:0.005:USD:20Y
+EQ:AMZN:Financials:Europe:Base
+CDS:CDX:IssuerC:EUR:Subordinated:Low:1Y:Base
+IR:SWAP:GBP-LIBOR:USD:6M
+IR:SWVOL:EUR:6M
+FXVOL:RiskRev:IV:GBPUSD:1.5:Call:6M:Base
+FXSPOT:1.1000:USDJPY:Base
+EQ:TSLA:Healthcare:Northern America:Base
+IR:EU-LINEAR:0.025:EUR:2Y
+CMD:NaturalGas:Global:75.0:Base
+CMD:Silver:Global:75.0:Base
+FXVOL:Butterfly:Vega:AUDUSD:1.5:Call:6M:Base
+FXSPOT:0.0068:USDJPY:Base
+IR:US-LINEAR:0.02:USD:6M
+FXVOL:ATM:Vega:AUDUSD:1.5:Call:6M:Base
+CR:Custom:IssuerK:GBP:Senior:High:1Y:Base
+CMD:NaturalGas:Northern America:75.0:Base
+CR:CRY:IssuerO:EUR:Senior:Low:5Y:Base
+IR:SWVOL:USD:1Y
+EQ:JPM:Industrial:Northern America:Base
+FXSPOT:0.7500:USDCAD:Base
+FXVOL:ATM:Vega:EURUSD:1.5:Call:1Y:Base
+EQ:JPM:Healthcare:Europe:Base
+FXSPOT:0.7500:AUDUSD:Base
+IR:SWAP:EUR-EURIBOR:GBP:6M
+CMD:Gold:Northern America:125.25:Base
+BOND:AA+:1Y:Senior:Corp:Northern America:USD:No:Base
+EQ:WMT:Technology:Asia:Base
+IR:US-LINEAR:0.005:GBP:1Y
+CMD:Soybeans:Asia:50.5:Base
+IR:US-LINEAR:0.01:GBP:20Y
+CDS:iTraxx:IssuerG:GBP:Senior:Medium:10Y:Base
+CMD:NaturalGas:Asia:100.0:Base
+FXSPOT:0.0068:AUDUSD:Base
+CMD:Silver:Global:150.75:Base
+CR:Custom:IssuerM:EUR:Subordinated:Medium:1Y:Base
+EQ:BAC:Healthcare:Asia:Base
+EQ:JPM:Healthcare:Asia:Base
+FXSPOT:1.1000:GBPUSD:Base
+CMD:Copper:Northern America:125.25:Base
+IR:SWAP:GBP-LIBOR:EUR:20Y
+CMD:Copper:Northern America:150.75:Base
+EQ:AMZN:Consumer:Asia:Base
+IR:EU-LINEAR:0.025:GBP:2Y
+CDS:iTraxx:IssuerI:JPY:Subordinated:Low:2Y:Base
+FXVOL:ATM:IV:EURUSD:2.0:Call:1Y:Base
+BOND:BBB:20Y:Subordinated:Industrial:AroundAfrica:USD:Yes:Base
+BOND:AA:1Y:Subordinated:Financial:AroundAfrica:JPY:Yes:Base
+CMD:Copper:Europe:75.0:Base
+FXSPOT:1.1000:GBPUSD:Base
+BOND:A:20Y:Subordinated:Financial:Southern Europe:USD:No:Base
+EQ:JPM:Financials:Asia:Base
+CDS:Custom:IssuerH:GBP:Senior:High:2Y:Base
+CMD:Soybeans:Europe:50.5:Base
+FXVOL:RiskRev:IV:USDCAD:0.5:Call:3M:Base
+IR:SWVOL:GBP:6M
+BOND:BB:10Y:Subordinated:Financial:AroundAfrica:USD:Yes:Base
+IR:SWAP:USD-LIBOR:USD:1Y
+BOND:BBB:20Y:Subordinated:Corp:Southern Europe:JPY:Yes:Base
+CMD:Gold:Northern America:150.75:Base
+CR:Custom:IssuerQ:EUR:Subordinated:Low:5Y:Base
+FXVOL:RiskRev:IV:GBPUSD:2.0:Call:3M:Base
+CR:CRX:IssuerK:EUR:Senior:Low:5Y:Base
+FXSPOT:0.8500:USDJPY:Base
+IR:SWAP:GBP-LIBOR:USD:2Y
+CMD:Copper:Global:75.0:Base
+BOND:BBB:2Y:Senior:Industrial:AroundAfrica:EUR:Yes:Base
+CMD:Oil:Asia:50.5:Base
+FXSPOT:0.7500:GBPUSD:Base
+BOND:AA:5Y:Senior:Industrial:Northern America:EUR:Yes:Base
+IR:SWAP:USD-LIBOR:GBP:2Y
+IR:UK-LINEAR:0.015:EUR:20Y
+CDS:Custom:IssuerH:GBP:Subordinated:Low:2Y:Base
+EQ:WMT:Technology:Europe:Base
+IR:SWAP:EUR-EURIBOR:GBP:1Y
+FXSPOT:1.1000:GBPUSD:Base
+BOND:BB:2Y:Subordinated:Utilities:AroundAfrica:JPY:Yes:Base
+FXVOL:ATM:IV:EURUSD:2.0:Call:1Y:Base
+FXSPOT:130.50:EURUSD:Base
+IR:SWVOL:USD:3M
+BOND:A+:1Y:Senior:Financial:Southern Europe:GBP:No:Base
+FXVOL:Butterfly:IV:EURUSD:1.5:Call:3M:Base
+BOND:BBB:6M:Senior:Industrial:Southern Europe:USD:No:Base
+FXSPOT:0.0068:USDJPY:Base
+CMD:Gold:Northern America:50.5:Base
+CDS:CDX:IssuerA:GBP:Subordinated:High:2Y:Base
+IR:SWVOL:GBP:3M
+EQ:GOOGL:Technology:Europe:Base
+FXVOL:Butterfly:Vega:USDJPY:1.5:Call:1M:Base
+FXVOL:ATM:Vega:AUDUSD:0.5:Put:3M:Base
+IR:SWVOL:GBP:1Y
+IR:SWVOL:EUR:1Y
+IR:SWVOL:GBP:1Y
+IR:SWAP:USD-LIBOR:EUR:6M
+CMD:Silver:Asia:125.25:Base
+IR:SWVOL:GBP:6M
+EQ:BAC:Financials:Asia:Base
+CMD:Gold:Global:50.5:Base
+IR:US-LINEAR:0.01:GBP:20Y
+BOND:BB:2Y:Senior:Corp:Northwest Europe:EUR:Yes:Base
+IR:SWAP:EUR-EURIBOR:USD:10Y
+CMD:Oil:Northern America:75.0:Base
+FXSPOT:0.8500:GBPUSD:Base
+CDS:iTraxx:IssuerJ:USD:Senior:High:2Y:Base
+CR:CRY:IssuerM:USD:Senior:High:10Y:Base
+FXVOL:Butterfly:IV:USDCAD:1.5:Call:1M:Base
+BOND:AA:20Y:Senior:Financial:Southern Europe:JPY:No:Base
+IR:UK-LINEAR:0.015:USD:6M
+BOND:AAA:20Y:Subordinated:Financial:AroundAfrica:JPY:Yes:Base
+CR:Custom:IssuerP:JPY:Senior:High:10Y:Base
+FXVOL:Butterfly:Vega:USDJPY:0.5:Put:6M:Base
+IR:SWAP:USD-LIBOR:EUR:6M
+IR:SWVOL:USD:1M
+FXVOL:Butterfly:IV:AUDUSD:1.5:Call:1Y:Base
+CDS:Custom:IssuerE:JPY:Subordinated:Medium:5Y:Base
+FXVOL:Butterfly:IV:GBPUSD:2.0:Put:1Y:Base
+FXSPOT:0.7500:EURUSD:Base
+CDS:Custom:IssuerJ:EUR:Subordinated:High:5Y:Base
+CR:CRX:IssuerQ:EUR:Senior:High:1Y:Base
+IR:SWVOL:USD:1Y
+CDS:iTraxx:IssuerJ:USD:Subordinated:Low:1Y:Base
+IR:US-LINEAR:0.01:EUR:5Y
+CR:CRY:IssuerT:USD:Senior:Low:10Y:Base
+IR:SWAP:EUR-EURIBOR:EUR:20Y
+CR:Custom:IssuerS:JPY:Subordinated:Low:10Y:Base
+IR:SWAP:USD-LIBOR:USD:2Y
+IR:SWVOL:USD:6M
+IR:UK-LINEAR:0.015:GBP:10Y
+CR:CRX:IssuerM:USD:Subordinated:Medium:5Y:Base
+IR:US-LINEAR:0.01:USD:1Y
+IR:EU-LINEAR:0.025:USD:6M
+IR:EU-LINEAR:0.015:GBP:1Y
+IR:US-LINEAR:0.025:GBP:2Y
+IR:US-LINEAR:0.02:EUR:1Y
+FXSPOT:0.0068:GBPUSD:Base
+CDS:iTraxx:IssuerF:USD:Senior:Low:5Y:Base
+BOND:A:10Y:Senior:Corp:Latin America:GBP:No:Base
+IR:SWAP:EUR-EURIBOR:EUR:10Y
+CR:CRY:IssuerO:EUR:Senior:Medium:1Y:Base
+EQ:MSFT:Financials:Northern America:Base
+CR:Custom:IssuerK:EUR:Senior:Medium:5Y:Base
+IR:SWVOL:GBP:3M
+IR:SWVOL:USD:6M
+BOND:AAA:6M:Subordinated:Industrial:Asia:JPY:No:Base
+EQ:JPM:Healthcare:Asia:Base
+FXSPOT:1.1000:EURUSD:Base
+IR:SWVOL:EUR:6M
+CR:CRY:IssuerO:USD:Subordinated:Medium:10Y:Base
+IR:SWAP:GBP-LIBOR:GBP:5Y
+BOND:AAA:1Y:Subordinated:Corp:Oceania:JPY:Yes:Base
+CDS:iTraxx:IssuerD:GBP:Senior:Medium:1Y:Base
+BOND:AA:20Y:Subordinated:Financial:Latin America:JPY:No:Base
+FXSPOT:0.8500:GBPUSD:Base
+EQ:JPM:Healthcare:Europe:Base
+CR:Custom:IssuerQ:USD:Subordinated:Medium:2Y:Base
+CMD:Gold:Europe:100.0:Base
+IR:UK-LINEAR:0.015:GBP:2Y
+CMD:Soybeans:Global:75.0:Base
+FXVOL:Butterfly:Vega:USDJPY:0.5:Put:6M:Base
+EQ:JNJ:Industrial:Asia:Base
+FXVOL:ATM:Vega:USDJPY:0.5:Put:1Y:Base
+IR:US-LINEAR:0.005:GBP:10Y
+BOND:A+:6M:Subordinated:Financial:Latin America:JPY:No:Base
+IR:SWVOL:GBP:3M
+FXSPOT:0.0068:AUDUSD:Base
+FXSPOT:1.1000:USDJPY:Base
+CDS:CDX:IssuerJ:GBP:Senior:Medium:10Y:Base
+CR:Custom:IssuerN:USD:Subordinated:High:1Y:Base
+IR:SWAP:GBP-LIBOR:GBP:20Y
+FXSPOT:0.8500:USDCAD:Base
+IR:SWVOL:GBP:1Y
+IR:SWAP:GBP-LIBOR:GBP:5Y
+CDS:CDX:IssuerG:USD:Subordinated:High:2Y:Base
+EQ:GOOGL:Healthcare:Northern America:Base
+BOND:AA:10Y:Senior:Industrial:Southern Europe:USD:Yes:Base
+IR:US-LINEAR:0.025:EUR:2Y
+IR:US-LINEAR:0.025:EUR:10Y
+FXVOL:RiskRev:IV:EURUSD:1.5:Call:6M:Base
+FXVOL:RiskRev:IV:AUDUSD:0.5:Put:1M:Base
+IR:SWAP:USD-LIBOR:USD:20Y
+EQ:BAC:Industrial:Europe:Base
+IR:SWVOL:GBP:6M
+BOND:A+:10Y:Subordinated:Corp:AroundAfrica:GBP:Yes:Base
+FXVOL:ATM:Vega:USDJPY:2.0:Put:1Y:Base
+CMD:Copper:Northern America:100.0:Base
+CMD:Oil:Europe:75.0:Base
+CDS:Custom:IssuerI:USD:Subordinated:High:1Y:Base
+CDS:CDX:IssuerE:EUR:Senior:Low:2Y:Base
+IR:SWVOL:GBP:3M
+IR:SWAP:USD-LIBOR:USD:20Y
+FXVOL:ATM:IV:GBPUSD:1.0:Call:3M:Base
+IR:US-LINEAR:0.015:EUR:10Y
+BOND:BB:20Y:Senior:Financial:AroundAfrica:USD:Yes:Base
+IR:SWAP:GBP-LIBOR:USD:6M
+CDS:Custom:IssuerJ:GBP:Subordinated:High:1Y:Base
+CDS:iTraxx:IssuerG:JPY:Senior:Medium:2Y:Base
+FXVOL:Butterfly:Vega:AUDUSD:2.0:Put:3M:Base
+CMD:NaturalGas:Asia:100.0:Base
+FXSPOT:1.1000:USDJPY:Base
+CDS:CDX:IssuerB:USD:Senior:Low:10Y:Base
+CMD:Copper:Global:75.0:Base
+IR:SWVOL:GBP:3M
+IR:SWAP:EUR-EURIBOR:USD:6M
+IR:UK-LINEAR:0.005:GBP:6M
+IR:SWAP:GBP-LIBOR:EUR:5Y
+CDS:CDX:IssuerH:GBP:Subordinated:Medium:1Y:Base
+IR:US-LINEAR:0.02:GBP:20Y
+CR:CRY:IssuerQ:EUR:Senior:Medium:10Y:Base
+FXSPOT:1.1000:AUDUSD:Base
+IR:SWVOL:EUR:1Y
+CR:Custom:IssuerR:JPY:Subordinated:High:5Y:Base
+FXSPOT:1.1000:AUDUSD:Base
+BOND:AAA:2Y:Subordinated:Financial:Oceania:JPY:Yes:Base
+IR:SWAP:EUR-EURIBOR:GBP:6M
+FXSPOT:0.7500:EURUSD:Base
+IR:SWAP:EUR-EURIBOR:GBP:10Y
+IR:SWVOL:EUR:1Y
+CR:CRX:IssuerR:JPY:Senior:Medium:2Y:Base
+CR:CRX:IssuerT:EUR:Subordinated:Low:5Y:Base
+IR:US-LINEAR:0.005:USD:2Y
+FXSPOT:0.0068:EURUSD:Base
+IR:SWAP:USD-LIBOR:EUR:1Y
+EQ:JNJ:Healthcare:Northern America:Base
+CDS:CDX:IssuerG:EUR:Subordinated:High:10Y:Base
+IR:EU-LINEAR:0.005:USD:20Y
+CDS:iTraxx:IssuerC:EUR:Senior:High:2Y:Base
+CMD:Copper:Northern America:125.25:Base
+IR:US-LINEAR:0.02:EUR:20Y
+IR:SWVOL:GBP:1Y
+CDS:CDX:IssuerC:USD:Senior:Medium:5Y:Base
+CR:CRY:IssuerK:JPY:Subordinated:Low:10Y:Base
+IR:UK-LINEAR:0.02:USD:20Y
+FXVOL:ATM:Vega:AUDUSD:0.5:Put:1Y:Base
+CMD:Soybeans:Global:75.0:Base
+CR:Custom:IssuerP:EUR:Senior:Medium:2Y:Base
+EQ:BAC:Financials:Europe:Base
+FXVOL:ATM:Vega:USDCAD:1.5:Put:1M:Base
+FXVOL:Butterfly:Vega:USDJPY:0.5:Put:1M:Base
+FXVOL:RiskRev:Vega:USDCAD:1.5:Call:1M:Base
+CDS:iTraxx:IssuerF:JPY:Subordinated:Medium:5Y:Base
+FXVOL:ATM:Vega:USDJPY:2.0:Put:1Y:Base
+FXVOL:Butterfly:Vega:EURUSD:1.5:Put:6M:Base
+BOND:A+:6M:Subordinated:Utilities:Northern America:JPY:No:Base
+IR:SWVOL:EUR:3M
+IR:SWAP:USD-LIBOR:GBP:20Y
+IR:SWAP:EUR-EURIBOR:EUR:1Y
+BOND:A+:2Y:Subordinated:Industrial:AroundAfrica:JPY:No:Base
+FXVOL:Butterfly:Vega:USDJPY:1.5:Put:1Y:Base
+FXVOL:RiskRev:Vega:EURUSD:0.5:Call:3M:Base
+BOND:BBB:5Y:Subordinated:Industrial:Southern Europe:JPY:Yes:Base
+IR:SWAP:USD-LIBOR:USD:20Y
+CDS:iTraxx:IssuerE:USD:Senior:Low:5Y:Base
+BOND:AAA:20Y:Subordinated:Financial:Asia:USD:Yes:Base
+IR:SWAP:USD-LIBOR:EUR:2Y
+CDS:iTraxx:IssuerF:EUR:Subordinated:High:10Y:Base
+CMD:Oil:Northern America:150.75:Base
+CR:Custom:IssuerS:GBP:Senior:High:5Y:Base
+FXVOL:RiskRev:Vega:GBPUSD:1.0:Call:6M:Base
+CMD:Copper:Global:50.5:Base
+CDS:CDX:IssuerI:USD:Subordinated:High:10Y:Base
+BOND:BBB:20Y:Senior:Industrial:Northern America:JPY:No:Base
+IR:SWVOL:EUR:1Y
+FXSPOT:1.1000:EURUSD:Base
+IR:SWAP:USD-LIBOR:EUR:6M
+CMD:Soybeans:Asia:125.25:Base
+FXVOL:Butterfly:Vega:AUDUSD:1.5:Call:6M:Base
+BOND:AA:1Y:Senior:Utilities:Latin America:USD:Yes:Base
+BOND:AA:10Y:Senior:Corp:AroundAfrica:JPY:Yes:Base
+EQ:BAC:Consumer:Northern America:Base
+CMD:NaturalGas:Northern America:125.25:Base
+IR:SWVOL:USD:1M
+CMD:Oil:Global:75.0:Base
+CDS:iTraxx:IssuerA:JPY:Senior:Medium:2Y:Base
+CMD:NaturalGas:Northern America:125.25:Base
+CR:CRY:IssuerL:USD:Subordinated:High:1Y:Base
+FXVOL:ATM:IV:USDCAD:1.5:Call:1M:Base
+CMD:Gold:Global:50.5:Base
+IR:SWAP:EUR-EURIBOR:USD:10Y
+BOND:AAA:2Y:Senior:Corp:Northern America:USD:No:Base
+CMD:Soybeans:Northern America:100.0:Base
+EQ:AMZN:Consumer:Northern America:Base
+IR:UK-LINEAR:0.005:EUR:1Y
+CDS:Custom:IssuerJ:USD:Senior:Medium:5Y:Base
+EQ:JPM:Industrial:Northern America:Base
+CDS:iTraxx:IssuerA:USD:Senior:Medium:1Y:Base
+IR:SWAP:USD-LIBOR:EUR:2Y
+IR:SWVOL:USD:3M
+BOND:AA+:1Y:Senior:Corp:Northern America:USD:No:Base
+FXSPOT:130.50:USDCAD:Base
+IR:SWVOL:GBP:6M
+FXVOL:ATM:IV:AUDUSD:2.0:Put:1M:Base
+CR:CRX:IssuerK:GBP:Senior:Medium:2Y:Base
+FXVOL:Butterfly:Vega:USDJPY:0.5:Call:1Y:Base
+IR:SWAP:GBP-LIBOR:GBP:2Y
+CMD:Copper:Global:75.0:Base
+CMD:Gold:Global:150.75:Base
+CMD:Soybeans:Global:150.75:Base
+BOND:A+:5Y:Subordinated:Utilities:AroundAfrica:USD:No:Base
+IR:EU-LINEAR:0.01:EUR:6M
+FXVOL:RiskRev:IV:USDCAD:1.5:Call:1M:Base
+FXSPOT:130.50:USDJPY:Base
+FXSPOT:0.8500:GBPUSD:Base
+FXSPOT:0.0068:USDCAD:Base
+FXSPOT:1.1000:EURUSD:Base
+CMD:Copper:Asia:125.25:Base
+BOND:A:10Y:Subordinated:Utilities:Asia:GBP:Yes:Base
+EQ:BAC:Consumer:Europe:Base
+IR:SWVOL:GBP:1Y
+BOND:A:10Y:Senior:Industrial:Northwest Europe:USD:No:Base
+EQ:BAC:Consumer:Europe:Base
+FXVOL:RiskRev:IV:USDJPY:2.0:Call:1Y:Base
+CDS:iTraxx:IssuerI:EUR:Subordinated:Medium:2Y:Base
+CMD:Gold:Asia:150.75:Base
+FXSPOT:1.1000:USDJPY:Base
+EQ:V:Financials:Asia:Base
+FXVOL:RiskRev:Vega:EURUSD:2.0:Put:6M:Base
+IR:SWVOL:GBP:1Y
+CR:Custom:IssuerO:USD:Subordinated:Low:1Y:Base
+CDS:CDX:IssuerC:GBP:Senior:High:2Y:Base
+BOND:AA+:20Y:Subordinated:Financial:Asia:EUR:Yes:Base
+FXVOL:ATM:Vega:EURUSD:0.5:Call:1Y:Base
+IR:SWAP:GBP-LIBOR:GBP:20Y
+FXSPOT:1.1000:USDCAD:Base
+IR:EU-LINEAR:0.025:USD:5Y
+IR:EU-LINEAR:0.005:GBP:10Y
+FXSPOT:0.7500:AUDUSD:Base
+FXSPOT:0.7500:EURUSD:Base
+IR:EU-LINEAR:0.01:EUR:1Y
+CMD:NaturalGas:Global:125.25:Base
+FXSPOT:0.8500:AUDUSD:Base
+CDS:Custom:IssuerD:EUR:Subordinated:High:5Y:Base
+CMD:Oil:Asia:125.25:Base
+IR:SWAP:EUR-EURIBOR:GBP:10Y
+IR:EU-LINEAR:0.01:EUR:10Y
+CMD:Silver:Europe:100.0:Base
+IR:EU-LINEAR:0.015:EUR:6M
+EQ:MSFT:Consumer:Europe:Base
+EQ:AMZN:Healthcare:Europe:Base
+FXSPOT:0.7500:AUDUSD:Base
+FXSPOT:0.0068:USDJPY:Base
+EQ:AAPL:Consumer:Europe:Base
+IR:SWVOL:GBP:6M
+FXVOL:RiskRev:IV:GBPUSD:0.5:Put:1M:Base
+FXVOL:RiskRev:IV:GBPUSD:1.5:Call:6M:Base
+IR:UK-LINEAR:0.005:EUR:2Y
+IR:US-LINEAR:0.02:USD:1Y
+CDS:iTraxx:IssuerJ:USD:Subordinated:Medium:10Y:Base
+IR:US-LINEAR:0.01:EUR:1Y
+CDS:CDX:IssuerF:GBP:Senior:Low:2Y:Base
+CR:Custom:IssuerO:JPY:Subordinated:High:5Y:Base
+FXSPOT:130.50:EURUSD:Base
+IR:UK-LINEAR:0.015:EUR:10Y
+CMD:Gold:Northern America:50.5:Base
+IR:SWAP:EUR-EURIBOR:GBP:10Y
+IR:SWVOL:USD:1M
+CDS:CDX:IssuerG:GBP:Senior:Medium:10Y:Base
+CMD:Copper:Northern America:50.5:Base
+CMD:Oil:Global:150.75:Base
+FXVOL:RiskRev:Vega:GBPUSD:1.5:Call:3M:Base
+IR:UK-LINEAR:0.01:USD:20Y
+IR:SWAP:USD-LIBOR:USD:6M
+BOND:AAA:20Y:Subordinated:Financial:Latin America:JPY:No:Base
+IR:SWVOL:USD:1M
+FXVOL:Butterfly:Vega:AUDUSD:0.5:Put:1M:Base
+IR:UK-LINEAR:0.015:EUR:10Y
+EQ:MSFT:Consumer:Asia:Base
+BOND:AA:2Y:Subordinated:Financial:Northern America:EUR:Yes:Base
+EQ:JNJ:Financials:Asia:Base
+FXSPOT:130.50:AUDUSD:Base
+EQ:JPM:Financials:Northern America:Base
+CMD:Gold:Europe:125.25:Base
+FXSPOT:130.50:GBPUSD:Base
+BOND:BB:5Y:Senior:Industrial:Oceania:EUR:Yes:Base
+BOND:BB:1Y:Senior:Corp:Northern America:GBP:No:Base
+IR:SWAP:USD-LIBOR:USD:10Y
+CDS:CDX:IssuerA:JPY:Subordinated:Low:5Y:Base
+IR:SWVOL:USD:1M
+CDS:iTraxx:IssuerE:EUR:Senior:Low:1Y:Base
+EQ:AMZN:Technology:Northern America:Base
+CDS:iTraxx:IssuerB:EUR:Senior:Low:5Y:Base
+CMD:NaturalGas:Asia:150.75:Base
+CMD:Gold:Global:50.5:Base
+BOND:BB:20Y:Senior:Corp:Northern America:EUR:Yes:Base
+IR:EU-LINEAR:0.005:USD:6M
+IR:SWAP:EUR-EURIBOR:GBP:1Y
+BOND:AA+:2Y:Senior:Industrial:Asia:GBP:Yes:Base
+EQ:AMZN:Technology:Europe:Base
+IR:EU-LINEAR:0.015:USD:1Y
+IR:SWVOL:USD:3M
+IR:US-LINEAR:0.015:USD:1Y
+IR:UK-LINEAR:0.025:GBP:2Y
+EQ:V:Healthcare:Asia:Base
+FXVOL:Butterfly:IV:AUDUSD:0.5:Put:3M:Base
+CMD:Copper:Global:150.75:Base
+IR:US-LINEAR:0.005:USD:20Y
+EQ:TSLA:Consumer:Europe:Base
+IR:SWVOL:USD:1M
+BOND:BBB:20Y:Subordinated:Corp:Latin America:GBP:Yes:Base
+CR:Custom:IssuerL:EUR:Subordinated:Medium:1Y:Base
+IR:SWVOL:GBP:1M
+IR:SWVOL:GBP:1Y
+CDS:Custom:IssuerC:GBP:Subordinated:Low:10Y:Base
+CMD:Copper:Global:125.25:Base
+CDS:iTraxx:IssuerC:JPY:Subordinated:Low:2Y:Base
+CR:Custom:IssuerO:GBP:Senior:Low:2Y:Base
+IR:SWAP:EUR-EURIBOR:USD:20Y
+CR:CRY:IssuerQ:EUR:Senior:Medium:2Y:Base
+CDS:CDX:IssuerA:USD:Senior:Low:1Y:Base
+CMD:NaturalGas:Europe:100.0:Base
+EQ:JPM:Healthcare:Asia:Base
+CR:CRX:IssuerS:JPY:Subordinated:High:10Y:Base
+EQ:BAC:Financials:Asia:Base
+CR:Custom:IssuerN:EUR:Subordinated:Medium:2Y:Base
+FXVOL:ATM:Vega:USDCAD:1.0:Call:3M:Base
+CDS:CDX:IssuerE:JPY:Subordinated:High:5Y:Base
+BOND:A+:10Y:Senior:Financial:Northwest Europe:JPY:Yes:Base
+IR:SWVOL:USD:3M
+EQ:JPM:Industrial:Northern America:Base
+BOND:BBB:6M:Subordinated:Financial:Latin America:JPY:No:Base
+CR:CRX:IssuerO:USD:Subordinated:Low:10Y:Base
+FXSPOT:0.7500:USDJPY:Base
+FXVOL:Butterfly:IV:GBPUSD:2.0:Call:3M:Base
+FXVOL:ATM:Vega:GBPUSD:2.0:Call:1Y:Base
+CR:Custom:IssuerM:GBP:Subordinated:Low:5Y:Base
+FXVOL:ATM:Vega:EURUSD:1.5:Put:6M:Base
+CMD:Gold:Asia:75.0:Base
+IR:SWAP:USD-LIBOR:EUR:20Y
+CDS:CDX:IssuerB:JPY:Subordinated:High:10Y:Base
+IR:SWAP:GBP-LIBOR:GBP:10Y
+IR:SWAP:USD-LIBOR:USD:20Y
+CR:CRX:IssuerQ:GBP:Senior:Low:2Y:Base
+IR:UK-LINEAR:0.01:USD:2Y
+CR:CRX:IssuerR:JPY:Senior:Low:10Y:Base
+IR:SWVOL:EUR:1M
+IR:UK-LINEAR:0.025:GBP:10Y
+FXSPOT:0.0068:EURUSD:Base
+CMD:Gold:Asia:50.5:Base
+FXSPOT:130.50:GBPUSD:Base
+FXSPOT:1.1000:EURUSD:Base
+IR:EU-LINEAR:0.005:USD:5Y
+IR:SWAP:USD-LIBOR:USD:6M
+CMD:Soybeans:Europe:125.25:Base
+IR:EU-LINEAR:0.02:GBP:6M
+FXSPOT:1.1000:USDCAD:Base
+EQ:AMZN:Consumer:Asia:Base
+CR:CRX:IssuerK:GBP:Senior:Low:1Y:Base
+IR:SWVOL:EUR:3M
+CDS:CDX:IssuerE:EUR:Subordinated:Medium:1Y:Base
+IR:SWVOL:GBP:3M
+CR:CRX:IssuerL:USD:Subordinated:High:1Y:Base
+EQ:MSFT:Consumer:Northern America:Base
+BOND:AA+:5Y:Subordinated:Financial:Northern America:GBP:No:Base
+CDS:CDX:IssuerI:USD:Subordinated:Low:1Y:Base
+FXVOL:Butterfly:IV:GBPUSD:0.5:Call:3M:Base
+EQ:BAC:Consumer:Northern America:Base
+IR:SWVOL:EUR:1M
+EQ:AMZN:Consumer:Europe:Base
+EQ:V:Consumer:Europe:Base
+CMD:NaturalGas:Northern America:75.0:Base
+FXSPOT:130.50:GBPUSD:Base
+IR:SWAP:GBP-LIBOR:GBP:20Y
+BOND:A:1Y:Senior:Industrial:Latin America:JPY:No:Base
+IR:SWAP:EUR-EURIBOR:USD:1Y
+CDS:Custom:IssuerH:EUR:Subordinated:High:5Y:Base
+FXSPOT:0.8500:USDCAD:Base
+CDS:Custom:IssuerI:JPY:Subordinated:High:5Y:Base
+IR:SWAP:USD-LIBOR:GBP:6M
+CR:CRY:IssuerO:GBP:Subordinated:Low:1Y:Base
+FXVOL:Butterfly:IV:GBPUSD:1.5:Put:6M:Base
+IR:SWVOL:GBP:1M
+IR:US-LINEAR:0.015:EUR:10Y
+EQ:BAC:Financials:Asia:Base
+IR:SWVOL:USD:1M
+FXVOL:ATM:Vega:USDJPY:1.0:Put:6M:Base
+FXVOL:RiskRev:IV:USDCAD:1.0:Call:1Y:Base
+FXVOL:RiskRev:Vega:AUDUSD:2.0:Call:3M:Base
+IR:SWVOL:GBP:6M
+IR:SWVOL:USD:1Y
+FXVOL:Butterfly:Vega:AUDUSD:1.5:Call:3M:Base
+BOND:BBB:10Y:Senior:Corp:Asia:USD:No:Base
+FXSPOT:0.0068:USDCAD:Base
+EQ:AMZN:Financials:Europe:Base
+CMD:NaturalGas:Northern America:50.5:Base
+IR:SWAP:GBP-LIBOR:USD:6M
+IR:UK-LINEAR:0.005:USD:5Y
+IR:SWAP:USD-LIBOR:GBP:5Y
+CR:CRY:IssuerP:JPY:Senior:High:1Y:Base
+CDS:Custom:IssuerG:GBP:Senior:High:2Y:Base
+FXVOL:Butterfly:IV:GBPUSD:1.0:Call:1M:Base
+EQ:AMZN:Industrial:Northern America:Base
+BOND:A:6M:Senior:Corp:Northwest Europe:USD:Yes:Base
+FXSPOT:0.7500:USDJPY:Base
+FXVOL:Butterfly:Vega:AUDUSD:2.0:Call:3M:Base
+IR:SWVOL:GBP:6M
+IR:SWVOL:EUR:1M
+IR:SWVOL:GBP:1Y
+CMD:Copper:Europe:50.5:Base
+CDS:iTraxx:IssuerD:GBP:Subordinated:Low:5Y:Base
+BOND:A:2Y:Senior:Industrial:Southern Europe:JPY:No:Base
+IR:EU-LINEAR:0.015:USD:5Y
+CR:CRY:IssuerM:EUR:Subordinated:Low:10Y:Base
+EQ:AAPL:Consumer:Asia:Base
+EQ:JNJ:Industrial:Asia:Base
+CDS:Custom:IssuerB:JPY:Senior:High:10Y:Base
+IR:SWAP:USD-LIBOR:GBP:2Y
+EQ:GOOGL:Healthcare:Europe:Base
+FXSPOT:0.8500:EURUSD:Base
+IR:SWVOL:GBP:3M
+CMD:Oil:Asia:50.5:Base
+CMD:Silver:Global:50.5:Base
+IR:SWVOL:USD:1M
+CDS:iTraxx:IssuerI:GBP:Subordinated:Low:10Y:Base
+EQ:GOOGL:Consumer:Northern America:Base
+BOND:A+:2Y:Senior:Utilities:Northern America:EUR:No:Base
+IR:SWAP:USD-LIBOR:USD:10Y
+CR:CRY:IssuerQ:GBP:Senior:Medium:5Y:Base
+FXVOL:RiskRev:IV:EURUSD:2.0:Call:1Y:Base
+CMD:Gold:Europe:75.0:Base
+CR:Custom:IssuerO:GBP:Subordinated:Medium:2Y:Base
+CDS:CDX:IssuerC:GBP:Subordinated:High:2Y:Base
+IR:SWAP:EUR-EURIBOR:USD:1Y
+IR:SWAP:GBP-LIBOR:GBP:20Y
+CR:CRY:IssuerT:JPY:Subordinated:Low:5Y:Base
+FXVOL:RiskRev:Vega:USDCAD:1.5:Call:1M:Base
+IR:SWAP:GBP-LIBOR:EUR:1Y
+FXVOL:RiskRev:IV:AUDUSD:1.0:Call:6M:Base
+FXSPOT:0.8500:EURUSD:Base
+CR:CRY:IssuerR:USD:Senior:Low:1Y:Base
+IR:SWVOL:USD:1M
+BOND:BBB:10Y:Subordinated:Corp:Southern Europe:JPY:Yes:Base
+IR:SWVOL:USD:6M
+IR:SWVOL:USD:6M
+CDS:CDX:IssuerD:EUR:Senior:Medium:5Y:Base
+IR:SWVOL:GBP:3M
+IR:EU-LINEAR:0.005:GBP:1Y
+IR:EU-LINEAR:0.01:USD:2Y
+CR:Custom:IssuerR:EUR:Senior:Low:10Y:Base
+BOND:AA:5Y:Senior:Utilities:Northern America:USD:No:Base
+IR:SWVOL:USD:1Y
+BOND:BBB:2Y:Subordinated:Utilities:Northwest Europe:GBP:No:Base
+IR:SWVOL:GBP:1Y
+CMD:Oil:Global:50.5:Base
+CMD:NaturalGas:Global:100.0:Base
+BOND:AA+:1Y:Subordinated:Utilities:Northwest Europe:JPY:No:Base
+IR:SWAP:USD-LIBOR:EUR:10Y
+IR:US-LINEAR:0.01:EUR:20Y
+FXSPOT:1.1000:AUDUSD:Base
+IR:EU-LINEAR:0.005:GBP:6M
+EQ:BAC:Industrial:Europe:Base
+IR:SWAP:USD-LIBOR:USD:6M
+IR:SWAP:GBP-LIBOR:USD:10Y
+CMD:Copper:Northern America:50.5:Base
+CDS:iTraxx:IssuerH:GBP:Subordinated:Low:10Y:Base
+FXSPOT:130.50:GBPUSD:Base
+CR:Custom:IssuerP:EUR:Subordinated:Medium:2Y:Base
+FXSPOT:130.50:EURUSD:Base
+IR:SWAP:EUR-EURIBOR:GBP:5Y
+IR:US-LINEAR:0.025:GBP:10Y
+IR:UK-LINEAR:0.01:USD:1Y
+FXVOL:ATM:IV:USDCAD:2.0:Call:3M:Base
+BOND:A:5Y:Subordinated:Financial:Oceania:USD:No:Base
+CR:CRX:IssuerS:EUR:Subordinated:High:1Y:Base
+FXVOL:Butterfly:Vega:USDJPY:2.0:Put:1M:Base
+IR:SWVOL:EUR:1M
+BOND:BBB:10Y:Senior:Corp:Latin America:USD:Yes:Base
+CDS:CDX:IssuerC:JPY:Senior:Low:2Y:Base
+IR:SWVOL:USD:6M
+CMD:Copper:Global:50.5:Base
+CR:CRX:IssuerS:USD:Senior:Low:10Y:Base
+CR:Custom:IssuerR:USD:Senior:Medium:5Y:Base
+EQ:JNJ:Financials:Asia:Base
+CDS:CDX:IssuerA:GBP:Senior:Medium:1Y:Base
+IR:US-LINEAR:0.01:EUR:2Y
+BOND:BBB:2Y:Senior:Corp:Asia:EUR:Yes:Base
+BOND:A:1Y:Subordinated:Financial:Asia:GBP:Yes:Base
+IR:SWVOL:USD:1M
+CMD:Gold:Northern America:150.75:Base
+EQ:MSFT:Consumer:Asia:Base
+IR:SWVOL:EUR:1M
+BOND:AA+:5Y:Subordinated:Corp:AroundAfrica:GBP:Yes:Base
+IR:SWVOL:USD:6M
+IR:US-LINEAR:0.015:EUR:5Y
+IR:SWVOL:GBP:3M
+CDS:Custom:IssuerH:GBP:Senior:Medium:10Y:Base
+EQ:AMZN:Industrial:Europe:Base
+IR:US-LINEAR:0.025:GBP:20Y
+IR:UK-LINEAR:0.025:USD:5Y
+BOND:A+:5Y:Subordinated:Financial:Oceania:GBP:No:Base
+FXVOL:Butterfly:IV:AUDUSD:1.5:Put:1Y:Base
+BOND:BB:5Y:Subordinated:Corp:Latin America:EUR:No:Base
+IR:SWVOL:EUR:1Y
+IR:EU-LINEAR:0.02:GBP:2Y
+CDS:Custom:IssuerA:EUR:Subordinated:Medium:5Y:Base
+BOND:AA+:1Y:Senior:Industrial:Latin America:GBP:Yes:Base
+IR:SWAP:EUR-EURIBOR:GBP:1Y
+FXVOL:Butterfly:Vega:GBPUSD:1.0:Put:1M:Base
+CDS:CDX:IssuerI:JPY:Subordinated:Low:2Y:Base
+CMD:Copper:Asia:150.75:Base
+CR:CRX:IssuerR:GBP:Subordinated:Medium:1Y:Base
+IR:SWVOL:USD:6M
+IR:SWAP:EUR-EURIBOR:EUR:10Y
+CR:CRY:IssuerK:EUR:Senior:Low:5Y:Base
+IR:UK-LINEAR:0.005:GBP:2Y
+CR:CRY:IssuerO:USD:Subordinated:Low:10Y:Base
+CDS:iTraxx:IssuerF:JPY:Subordinated:Low:10Y:Base
+FXVOL:Butterfly:Vega:USDJPY:1.5:Put:1M:Base
+BOND:BBB:2Y:Senior:Corp:Southern Europe:USD:Yes:Base
+EQ:AMZN:Consumer:Asia:Base
+BOND:BB:2Y:Senior:Corp:Northwest Europe:GBP:No:Base
+CDS:iTraxx:IssuerD:JPY:Subordinated:Low:10Y:Base
+IR:US-LINEAR:0.015:GBP:6M
+CR:CRX:IssuerL:GBP:Senior:Medium:2Y:Base
+CMD:Silver:Global:50.5:Base
+EQ:WMT:Industrial:Europe:Base
+FXSPOT:0.7500:EURUSD:Base
+CDS:CDX:IssuerI:GBP:Senior:Low:5Y:Base
+IR:SWVOL:USD:1Y
+IR:UK-LINEAR:0.015:USD:5Y
+CR:CRX:IssuerP:EUR:Subordinated:Low:2Y:Base
+IR:SWVOL:USD:1M
+FXSPOT:0.7500:AUDUSD:Base
+CR:CRX:IssuerS:USD:Subordinated:High:1Y:Base
+IR:SWVOL:EUR:6M
+CDS:iTraxx:IssuerE:GBP:Subordinated:High:10Y:Base
+CR:CRX:IssuerN:EUR:Senior:Low:1Y:Base
+BOND:BB:6M:Senior:Industrial:Asia:EUR:No:Base
+IR:US-LINEAR:0.02:EUR:6M
+IR:SWAP:USD-LIBOR:USD:10Y
+CDS:Custom:IssuerD:EUR:Subordinated:Low:1Y:Base
+FXSPOT:0.0068:USDJPY:Base
+BOND:BBB:1Y:Senior:Utilities:AroundAfrica:GBP:Yes:Base
+FXSPOT:0.7500:USDCAD:Base
+EQ:BAC:Technology:Asia:Base
+CDS:Custom:IssuerD:EUR:Subordinated:Medium:5Y:Base
+BOND:BB:1Y:Senior:Industrial:AroundAfrica:EUR:Yes:Base
+CR:Custom:IssuerK:GBP:Senior:Medium:2Y:Base
+CR:Custom:IssuerT:GBP:Subordinated:High:1Y:Base
+CDS:CDX:IssuerH:GBP:Subordinated:Low:5Y:Base
+CMD:Gold:Northern America:125.25:Base
+CR:CRX:IssuerO:EUR:Senior:Low:10Y:Base
+IR:US-LINEAR:0.01:EUR:10Y
+IR:SWAP:EUR-EURIBOR:GBP:6M
+FXSPOT:0.0068:EURUSD:Base
+EQ:JPM:Healthcare:Asia:Base
+IR:UK-LINEAR:0.025:GBP:20Y
+CDS:CDX:IssuerH:JPY:Senior:Medium:1Y:Base
+EQ:BAC:Technology:Northern America:Base
+IR:SWAP:EUR-EURIBOR:USD:6M
+EQ:BAC:Consumer:Asia:Base
+CMD:Soybeans:Global:75.0:Base
+FXVOL:Butterfly:Vega:USDCAD:0.5:Call:1Y:Base
+FXSPOT:130.50:GBPUSD:Base
+IR:SWAP:GBP-LIBOR:USD:10Y
+IR:SWAP:GBP-LIBOR:GBP:5Y
+CDS:iTraxx:IssuerH:USD:Senior:High:10Y:Base
+CMD:Soybeans:Europe:50.5:Base
+FXVOL:ATM:Vega:USDCAD:2.0:Put:1Y:Base
+CR:CRX:IssuerT:JPY:Senior:Low:5Y:Base
+BOND:BBB:5Y:Senior:Financial:Southern Europe:EUR:Yes:Base
+CR:CRX:IssuerO:USD:Senior:Medium:10Y:Base
+FXSPOT:0.0068:EURUSD:Base
+BOND:BBB:6M:Subordinated:Industrial:Northern America:EUR:No:Base
+IR:EU-LINEAR:0.025:USD:6M
+CR:CRY:IssuerL:EUR:Subordinated:High:1Y:Base
+FXVOL:ATM:IV:USDJPY:2.0:Put:3M:Base
+FXVOL:ATM:Vega:USDCAD:2.0:Put:6M:Base
+CMD:Oil:Northern America:150.75:Base
+BOND:BB:5Y:Senior:Corp:Northwest Europe:JPY:Yes:Base
+EQ:AAPL:Financials:Asia:Base
+EQ:AAPL:Financials:Asia:Base
+FXVOL:Butterfly:Vega:AUDUSD:1.0:Call:3M:Base
+IR:SWVOL:USD:1Y
+IR:UK-LINEAR:0.025:EUR:1Y
+IR:SWAP:USD-LIBOR:GBP:10Y
+FXVOL:ATM:IV:EURUSD:2.0:Call:1M:Base
+CDS:Custom:IssuerE:EUR:Subordinated:Medium:1Y:Base
+EQ:WMT:Technology:Northern America:Base
+BOND:BBB:5Y:Subordinated:Corp:Asia:EUR:No:Base
+IR:SWAP:EUR-EURIBOR:USD:5Y
+EQ:AAPL:Industrial:Europe:Base
+IR:SWVOL:GBP:1Y
+CDS:iTraxx:IssuerI:GBP:Subordinated:Medium:10Y:Base
+EQ:AAPL:Financials:Asia:Base
+EQ:MSFT:Healthcare:Europe:Base
+FXSPOT:130.50:GBPUSD:Base
+IR:SWAP:EUR-EURIBOR:USD:5Y
+CR:CRX:IssuerP:USD:Subordinated:High:5Y:Base
+FXSPOT:130.50:USDJPY:Base
+FXVOL:ATM:IV:USDJPY:2.0:Call:6M:Base
+BOND:AA+:1Y:Subordinated:Corp:Southern Europe:GBP:No:Base
+CDS:iTraxx:IssuerI:GBP:Subordinated:Low:2Y:Base
+IR:SWVOL:GBP:1M
+EQ:TSLA:Technology:Asia:Base
+FXSPOT:130.50:AUDUSD:Base
+FXSPOT:130.50:AUDUSD:Base
+FXVOL:Butterfly:Vega:EURUSD:0.5:Call:6M:Base
+CDS:CDX:IssuerA:GBP:Subordinated:Low:1Y:Base
+EQ:V:Industrial:Asia:Base
+FXSPOT:1.1000:USDJPY:Base
+BOND:A:20Y:Senior:Industrial:Northwest Europe:GBP:Yes:Base
+FXVOL:RiskRev:Vega:USDJPY:0.5:Call:1M:Base
+CMD:NaturalGas:Global:75.0:Base
+EQ:WMT:Industrial:Northern America:Base
+IR:SWAP:USD-LIBOR:GBP:10Y
+IR:SWVOL:USD:1Y
+FXVOL:ATM:Vega:EURUSD:0.5:Call:1M:Base
+IR:US-LINEAR:0.015:USD:5Y
+EQ:V:Consumer:Asia:Base
+IR:US-LINEAR:0.025:GBP:6M
+FXVOL:Butterfly:IV:AUDUSD:2.0:Put:1M:Base
+CR:Custom:IssuerM:JPY:Subordinated:Medium:10Y:Base
+CR:Custom:IssuerN:USD:Senior:Medium:2Y:Base
+CR:CRX:IssuerK:EUR:Senior:Medium:10Y:Base
+IR:SWAP:USD-LIBOR:USD:20Y
+CDS:iTraxx:IssuerJ:JPY:Senior:High:5Y:Base
+CR:CRX:IssuerO:USD:Subordinated:Medium:10Y:Base
+IR:EU-LINEAR:0.005:EUR:6M
+EQ:MSFT:Industrial:Europe:Base
+BOND:BBB:10Y:Subordinated:Financial:Asia:JPY:Yes:Base
+CR:CRX:IssuerS:EUR:Subordinated:Medium:5Y:Base
+EQ:AAPL:Financials:Asia:Base
+BOND:A+:5Y:Subordinated:Industrial:Latin America:USD:No:Base
+IR:SWAP:GBP-LIBOR:GBP:6M
+CDS:iTraxx:IssuerJ:USD:Subordinated:Medium:1Y:Base
+IR:SWAP:GBP-LIBOR:GBP:1Y
+IR:UK-LINEAR:0.01:GBP:10Y
+FXSPOT:0.8500:USDJPY:Base
+EQ:TSLA:Healthcare:Asia:Base
+IR:US-LINEAR:0.02:EUR:2Y
+FXVOL:ATM:Vega:EURUSD:2.0:Call:1Y:Base
+BOND:AAA:10Y:Senior:Utilities:Northwest Europe:GBP:No:Base
+FXSPOT:0.7500:AUDUSD:Base
+CDS:CDX:IssuerF:JPY:Subordinated:Low:5Y:Base
+IR:SWVOL:EUR:1Y
+IR:SWVOL:EUR:3M
+FXSPOT:130.50:USDCAD:Base
+IR:SWAP:GBP-LIBOR:USD:10Y
+CDS:iTraxx:IssuerC:JPY:Senior:Low:2Y:Base
+CR:CRX:IssuerM:USD:Senior:Low:10Y:Base
+CR:CRX:IssuerP:EUR:Subordinated:Medium:2Y:Base
+FXSPOT:130.50:AUDUSD:Base
+CDS:iTraxx:IssuerD:GBP:Senior:Medium:2Y:Base
+FXSPOT:1.1000:USDJPY:Base
+IR:SWAP:EUR-EURIBOR:GBP:1Y
+IR:UK-LINEAR:0.005:GBP:20Y
+CDS:iTraxx:IssuerD:EUR:Subordinated:Medium:10Y:Base
+IR:SWAP:EUR-EURIBOR:EUR:10Y
+CMD:Soybeans:Asia:50.5:Base
+IR:UK-LINEAR:0.01:GBP:2Y
+IR:SWAP:EUR-EURIBOR:GBP:5Y
+EQ:AAPL:Consumer:Northern America:Base
+FXSPOT:0.7500:GBPUSD:Base
+FXVOL:ATM:IV:GBPUSD:1.5:Call:6M:Base
+EQ:AMZN:Technology:Northern America:Base
+FXSPOT:0.0068:USDCAD:Base
+IR:EU-LINEAR:0.015:USD:2Y
+IR:SWVOL:GBP:1Y
+IR:SWAP:USD-LIBOR:EUR:5Y
+IR:SWVOL:USD:1Y
+IR:SWAP:EUR-EURIBOR:EUR:10Y
+IR:SWAP:USD-LIBOR:EUR:10Y
+BOND:BBB:1Y:Subordinated:Financial:Latin America:JPY:Yes:Base
+EQ:TSLA:Healthcare:Northern America:Base
+IR:US-LINEAR:0.005:USD:2Y
+CDS:CDX:IssuerJ:EUR:Subordinated:Medium:1Y:Base
+CR:CRY:IssuerQ:USD:Senior:Low:5Y:Base
+EQ:AAPL:Financials:Asia:Base
+IR:SWVOL:GBP:1M
+CMD:Soybeans:Asia:150.75:Base
+BOND:AA+:1Y:Subordinated:Utilities:Southern Europe:JPY:No:Base
+IR:EU-LINEAR:0.015:EUR:5Y
+IR:SWVOL:EUR:6M
+CDS:iTraxx:IssuerE:JPY:Subordinated:High:2Y:Base
+CDS:iTraxx:IssuerE:GBP:Senior:Low:10Y:Base
+CDS:CDX:IssuerB:GBP:Senior:Medium:10Y:Base
+CMD:Gold:Asia:150.75:Base
+CDS:CDX:IssuerJ:JPY:Senior:Low:1Y:Base
+IR:SWAP:USD-LIBOR:EUR:5Y
+CDS:CDX:IssuerE:JPY:Senior:Medium:10Y:Base
+IR:SWAP:USD-LIBOR:USD:6M
+CMD:Gold:Global:50.5:Base
+IR:UK-LINEAR:0.01:GBP:6M
+IR:SWVOL:EUR:1Y
+CR:Custom:IssuerO:GBP:Subordinated:Medium:1Y:Base
+CDS:iTraxx:IssuerB:EUR:Subordinated:Medium:10Y:Base
+FXVOL:ATM:Vega:USDCAD:2.0:Put:1Y:Base
+FXSPOT:0.7500:AUDUSD:Base
+CMD:Copper:Global:100.0:Base
+CMD:Soybeans:Global:150.75:Base
+EQ:V:Consumer:Asia:Base
+FXSPOT:0.0068:USDJPY:Base
+FXVOL:ATM:Vega:USDJPY:2.0:Call:6M:Base
+CR:Custom:IssuerP:USD:Subordinated:Medium:2Y:Base
+IR:SWAP:USD-LIBOR:EUR:2Y
+CMD:Copper:Asia:125.25:Base
+IR:US-LINEAR:0.01:USD:20Y
+CDS:CDX:IssuerG:USD:Subordinated:Low:2Y:Base
+CMD:Gold:Northern America:100.0:Base
+IR:UK-LINEAR:0.01:EUR:2Y
+IR:SWAP:USD-LIBOR:GBP:10Y
+BOND:A:20Y:Senior:Financial:Asia:EUR:No:Base
+EQ:V:Healthcare:Europe:Base
+CR:CRX:IssuerQ:JPY:Subordinated:Medium:1Y:Base
+CMD:Gold:Global:125.25:Base
+BOND:BBB:5Y:Senior:Financial:AroundAfrica:JPY:Yes:Base
+IR:SWAP:EUR-EURIBOR:USD:20Y
+EQ:BAC:Industrial:Asia:Base
+IR:SWVOL:USD:3M
+CDS:iTraxx:IssuerA:EUR:Subordinated:Low:10Y:Base
+IR:SWAP:USD-LIBOR:USD:2Y
+CR:CRY:IssuerS:USD:Senior:High:1Y:Base
+CR:Custom:IssuerN:EUR:Subordinated:Medium:5Y:Base
+FXVOL:Butterfly:IV:EURUSD:2.0:Call:1Y:Base
+CR:CRY:IssuerO:GBP:Senior:Low:2Y:Base
+FXVOL:ATM:IV:USDJPY:2.0:Put:6M:Base
+IR:SWAP:GBP-LIBOR:USD:2Y
+EQ:JPM:Consumer:Europe:Base
+CMD:Copper:Northern America:100.0:Base
+IR:UK-LINEAR:0.025:GBP:1Y
+EQ:MSFT:Financials:Northern America:Base
+BOND:AA:2Y:Subordinated:Corp:Oceania:JPY:Yes:Base
+IR:SWVOL:GBP:3M
+IR:SWVOL:GBP:6M
+IR:SWAP:GBP-LIBOR:USD:6M
+CR:CRY:IssuerR:JPY:Senior:High:2Y:Base
+CMD:Gold:Global:50.5:Base
+CDS:Custom:IssuerE:JPY:Senior:High:5Y:Base
+CR:Custom:IssuerN:EUR:Subordinated:Low:1Y:Base
+IR:US-LINEAR:0.025:GBP:1Y
+IR:SWAP:USD-LIBOR:USD:2Y
+IR:US-LINEAR:0.025:GBP:1Y
+FXVOL:RiskRev:IV:GBPUSD:1.0:Call:1Y:Base
+FXSPOT:0.7500:EURUSD:Base
+IR:US-LINEAR:0.025:USD:1Y
+CDS:CDX:IssuerE:EUR:Subordinated:Low:1Y:Base
+BOND:A+:20Y:Senior:Industrial:AroundAfrica:JPY:Yes:Base
+CMD:Gold:Northern America:150.75:Base
+CMD:Soybeans:Asia:75.0:Base
+EQ:AAPL:Healthcare:Asia:Base
+FXSPOT:130.50:EURUSD:Base
+EQ:AAPL:Financials:Northern America:Base
+FXVOL:Butterfly:IV:USDCAD:0.5:Call:6M:Base
+CDS:Custom:IssuerH:GBP:Subordinated:High:10Y:Base
+IR:EU-LINEAR:0.01:USD:6M
+CMD:Gold:Europe:50.5:Base
+EQ:AMZN:Technology:Europe:Base
+FXSPOT:0.7500:EURUSD:Base
+CDS:CDX:IssuerA:EUR:Senior:High:1Y:Base
+IR:UK-LINEAR:0.015:USD:10Y
+CR:CRX:IssuerT:EUR:Subordinated:High:2Y:Base
+IR:SWVOL:USD:6M
+FXVOL:RiskRev:Vega:GBPUSD:2.0:Call:3M:Base
+IR:SWAP:USD-LIBOR:EUR:2Y
+FXSPOT:130.50:USDCAD:Base
+IR:SWAP:GBP-LIBOR:GBP:1Y
+CR:Custom:IssuerO:USD:Subordinated:Medium:10Y:Base
+CMD:Oil:Northern America:75.0:Base
+IR:SWVOL:GBP:3M
+CDS:CDX:IssuerH:EUR:Senior:Medium:10Y:Base
+BOND:A:6M:Senior:Corp:Northern America:GBP:Yes:Base
+CR:CRY:IssuerP:USD:Senior:Medium:10Y:Base
+BOND:AAA:5Y:Senior:Utilities:Oceania:JPY:No:Base
+BOND:A:10Y:Subordinated:Utilities:Southern Europe:JPY:No:Base
+IR:SWAP:GBP-LIBOR:USD:6M
+CR:CRY:IssuerP:GBP:Senior:High:5Y:Base
+CDS:CDX:IssuerE:JPY:Subordinated:Low:2Y:Base
+BOND:AA:2Y:Subordinated:Utilities:Southern Europe:GBP:Yes:Base
+FXSPOT:0.7500:USDCAD:Base
+FXVOL:Butterfly:IV:EURUSD:1.5:Put:6M:Base
+FXVOL:RiskRev:Vega:USDJPY:2.0:Put:1M:Base
+CMD:Gold:Asia:125.25:Base
+FXSPOT:0.7500:GBPUSD:Base
+BOND:AAA:5Y:Senior:Industrial:AroundAfrica:USD:Yes:Base
+CMD:Silver:Northern America:100.0:Base
+CMD:Soybeans:Northern America:125.25:Base
+EQ:BAC:Technology:Europe:Base
+IR:SWAP:USD-LIBOR:EUR:5Y
+IR:SWVOL:EUR:1M
+EQ:V:Consumer:Asia:Base
+EQ:BAC:Technology:Northern America:Base
+FXSPOT:0.7500:USDJPY:Base
+FXSPOT:0.0068:AUDUSD:Base
+EQ:BAC:Consumer:Northern America:Base
+FXVOL:Butterfly:IV:USDCAD:1.0:Put:3M:Base
+IR:SWVOL:GBP:1M
+FXVOL:Butterfly:Vega:USDJPY:0.5:Put:1M:Base
+BOND:AA+:1Y:Subordinated:Industrial:Northwest Europe:USD:Yes:Base
