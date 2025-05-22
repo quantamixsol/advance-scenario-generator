@@ -1,6 +1,7 @@
 streamlit
-transformers 
-sentence-transformers 
+pandas
+transformers
+sentence-transformers
 scikit-learn
 torch 
 faiss-cpu 

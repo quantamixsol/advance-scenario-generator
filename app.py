@@ -30,6 +30,7 @@ from sentence_transformers import SentenceTransformer
 from generative import generate_narrative, explain_factors
 from generative import refine_shocks_with_llm
 from portfolio import PortfolioIngestor, RiskFactorMapper
+from exposures import apply_shocks
 
 # ─── pull all your global lookups & defaults from config.py ──────────────
 from config import (
@@ -356,6 +357,21 @@ if "un_df" in st.session_state:
 
         # now save to session for next step
         st.session_state["rf"] = rf
+
+        if "mapped_pf" in st.session_state:
+            pnl_df = apply_shocks(st.session_state["mapped_pf"], rf)
+            st.session_state["exposures"] = pnl_df
+            st.subheader("📈 Scenario PnL")
+            st.metric("Total PnL", f"${pnl_df['pnl'].sum():,.2f}")
+            st.dataframe(
+                pnl_df[["ticker", "quantity", "price", "rf_code", "shock_pct", "pnl"]],
+                use_container_width=True,
+            )
+            st.download_button(
+                "📥 Download PnL",
+                pnl_df.to_csv(index=False).encode("utf-8"),
+                "scenario_pnl.csv",
+            )
 
     # ─── 5️⃣ Upload & Load Proxy ──────────────────────────────────────
     st.header("4️⃣ Upload & Load Proxy")
