@@ -110,5 +110,8 @@ class RiskFactorMapper:
                 q = normalize(q, axis=1)
                 D, I = self.idx.search(q, 1)
                 df.loc[miss, "rf_sem"] = [self.exact.rf.iloc[i] if d > 0.4 else None for d, i in zip(D[:,0], I[:,0])]
-        df["rf_code"] = df["rf_exact"].fillna(df["rf_fuzzy"].fillna(df.get("rf_sem")))
+        # combine mappings without calling fillna(None) when 'rf_sem' is absent
+        df["rf_code"] = df["rf_exact"].fillna(df["rf_fuzzy"])
+        if "rf_sem" in df:
+            df["rf_code"] = df["rf_code"].fillna(df["rf_sem"])
         return df
