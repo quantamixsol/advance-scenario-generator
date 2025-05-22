@@ -41,3 +41,33 @@ python pipeline_flow.py --portfolio synthetic_portfolio.csv \
 ```
 
 This will create `pnl.csv` with the shocked PnL per position.
+
+## Portfolio Fields
+
+Portfolio files must contain `ticker`, `quantity`, and `price` columns.  The
+system will also make use of optional risk metrics when present:
+
+- `duration` or `dv01` for fixed income
+- `spread_dv01` and `recovery_rate` for CDS
+- `delta` or `vega` for options and volatility products
+- `fx_rate` to convert non-USD PnL to USD
+
+Including these columns results in more accurate PnL calculations.  If omitted,
+default assumptions based on tenor and asset class are used.
+
+## Custom Baseline Shocks
+
+Baseline shocks by asset class can be overridden with a JSON file mapping asset
+codes to shock magnitudes.  Pass the file with `--baseline_config`:
+
+```bash
+python pipeline_flow.py --portfolio mypf.csv --universe universe.csv \
+                       --baseline_config custom_shocks.json
+```
+
+## Pricing Methodology
+
+Equities, FX, and commodities apply percentage shocks to market value times
+delta.  Fixed income instruments use duration or DV01 if available.  CDS
+instruments accept `spread_dv01` inputs.  Volatility products can specify Vega to
+convert volatility point shocks into PnL.  See `pricing.py` for details.
