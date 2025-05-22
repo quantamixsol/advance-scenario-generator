@@ -29,6 +29,10 @@ def asset_pnl_breakdown(pnl_df: pd.DataFrame) -> pd.DataFrame:
     """Return total PnL per asset class."""
     return pnl_df.groupby("asset")["pnl"].sum().reset_index().rename(columns={"pnl": "asset_pnl"})
 
+def total_portfolio_pnl(pnl_df: pd.DataFrame) -> float:
+    """Return total portfolio PnL."""
+    return float(pnl_df["pnl"].sum())
+
 def validate_parallel_shocks(rf_df: pd.DataFrame) -> None:
     """Ensure shocks are parallel across interest-rate curve names."""
     if "curve_name" not in rf_df.columns:

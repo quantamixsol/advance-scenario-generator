@@ -2,7 +2,12 @@ import argparse
 import pandas as pd
 from portfolio import PortfolioIngestor, RiskFactorMapper
 from data_io import parse_df
-from exposures import apply_shocks, asset_pnl_breakdown, validate_parallel_shocks
+from exposures import (
+    apply_shocks,
+    asset_pnl_breakdown,
+    validate_parallel_shocks,
+    total_portfolio_pnl,
+)
 from config import SHOCK_UNITS, BASELINE_SHOCKS
 from embeddings import get_embedder
 from matching import proxy_match
@@ -38,8 +43,20 @@ def run_pipeline(portfolio: str, universe: str, severity: str = "Medium", baseli
     mapper = RiskFactorMapper(univ)
     mapped = mapper.map(pf)
 
+    # determine which asset classes actually appear in the portfolio
+    pf_assets = (
+        mapped.merge(
+            univ[["original", "asset"]],
+            left_on="rf_code",
+            right_on="original",
+            how="left",
+        )["asset"].dropna().unique()
+    )
+    # keep only risk factors for those assets
+    univ_sub = univ[univ["asset"].isin(pf_assets)].reset_index(drop=True)
+
     rf_codes = mapped["rf_code"].dropna().unique()
-    rf_df = univ[univ["original"].isin(rf_codes)].copy()
+    rf_df = univ_sub[univ_sub["original"].isin(rf_codes)].copy()
     overrides = None
     if baseline_config:
         with open(baseline_config) as fh:
@@ -50,6 +67,10 @@ def run_pipeline(portfolio: str, universe: str, severity: str = "Medium", baseli
     print("Applying shocks...")
     pnl_df = apply_shocks(mapped, rf_df)
     pnl_breakdown = asset_pnl_breakdown(pnl_df)
+    print(f"Total portfolio PnL: {total_portfolio_pnl(pnl_df):,.2f}")
+    if not pnl_breakdown.empty:
+        print("PnL by asset class:")
+        print(pnl_breakdown.to_string(index=False))
     return pnl_df, pnl_breakdown
 
 
@@ -111,6 +132,10 @@ def run_scenario_pipeline(
     print("Applying shocks…")
     pnl_df = apply_shocks(mapped, shocks)
     pnl_breakdown = asset_pnl_breakdown(pnl_df)
+    print(f"Total portfolio PnL: {total_portfolio_pnl(pnl_df):,.2f}")
+    if not pnl_breakdown.empty:
+        print("PnL by asset class:")
+        print(pnl_breakdown.to_string(index=False))
 
     return pnl_df, pnl_breakdown, rf_df, px_match
 
