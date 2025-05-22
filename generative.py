@@ -14,6 +14,7 @@ from dotenv import load_dotenv
 import streamlit as st
 import json
 import re
+import tempfile
 import logging
 from collections import defaultdict
 load_dotenv()
@@ -27,9 +28,20 @@ GEMINI_PRO_MODEL = "gemini-2.5-pro-preview-03-25"
 # If credentials are provided via the environment ensure the Vertex
 # SDK sees them. This allows keeping the credential file outside the
 # repository.
-cred_path = os.getenv("VERTEXAI_CREDENTIALS")
-if cred_path:
-    os.environ["GOOGLE_APPLICATION_CREDENTIALS"] = cred_path
+def _configure_vertex_credentials():
+    cred = os.getenv("VERTEXAI_CREDENTIALS")
+    if not cred and hasattr(st, "secrets"):
+        cred = st.secrets.get("VERTEXAI_CREDENTIALS")
+    if cred:
+        if not os.path.isfile(cred) and cred.strip().startswith("{"):
+            import tempfile
+            tmp = tempfile.NamedTemporaryFile(delete=False, suffix=".json")
+            tmp.write(cred.encode())
+            tmp.close()
+            cred = tmp.name
+        os.environ["GOOGLE_APPLICATION_CREDENTIALS"] = cred
+
+_configure_vertex_credentials()
 
 def _tenor_to_months(s: str) -> float:
     """
