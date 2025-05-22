@@ -2,8 +2,8 @@ import pandas as pd
 from config import SHOCK_UNITS
 from pricing import get_pricing_function
 
-def apply_shocks(mapped_portfolio: pd.DataFrame, rf_df: pd.DataFrame) -> pd.DataFrame:
-    """Merge portfolio with RF shocks and compute PnL for each position."""
+def apply_shocks(mapped_portfolio: pd.DataFrame, rf_df: pd.DataFrame, base_currency: str = "USD") -> pd.DataFrame:
+    """Merge portfolio with RF shocks and compute base-currency PnL for each position."""
     pf = mapped_portfolio.merge(
         rf_df[["original", "asset", "shock_pct"]].rename(columns={"original": "rf_code"}),
         on="rf_code",
@@ -15,15 +15,27 @@ def apply_shocks(mapped_portfolio: pd.DataFrame, rf_df: pd.DataFrame) -> pd.Data
             return 0.0
         fn = get_pricing_function(row.get("asset"))
         if fn:
-            return fn(row)
-        unit = SHOCK_UNITS.get(row.get("asset"), "pct")
-        pct = row["shock_pct"] / 10000 if unit == "bps" else row["shock_pct"] / 100
-        return -row["quantity"] * row.get("price", 1.0) * pct
-
+            pnl = fn(row)
+        else:
+            unit = SHOCK_UNITS.get(row.get("asset"), "pct")
+            pct = row["shock_pct"] / 10000 if unit == "bps" else row["shock_pct"] / 100
+            pnl = -row["quantity"] * row.get("price", 1.0) * pct
+        fx = row.get("fx_rate", 1.0)
+        return pnl * fx
     pf["pnl"] = pf.apply(_pnl, axis=1)
     return pf
 
 def asset_pnl_breakdown(pnl_df: pd.DataFrame) -> pd.DataFrame:
     """Return total PnL per asset class."""
     return pnl_df.groupby("asset")["pnl"].sum().reset_index().rename(columns={"pnl": "asset_pnl"})
+
+def validate_parallel_shocks(rf_df: pd.DataFrame) -> None:
+    """Ensure shocks are parallel across interest-rate curve names."""
+    if "curve_name" not in rf_df.columns:
+        return
+    grouped = rf_df.groupby(["curve_name"])["shock_pct"].nunique()
+    bad = grouped[grouped > 1]
+    if not bad.empty:
+        curves = ", ".join(bad.index.tolist())
+        raise ValueError(f"Non-parallel shocks detected for curves: {curves}")
 

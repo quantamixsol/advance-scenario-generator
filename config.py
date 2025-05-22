@@ -62,6 +62,14 @@ ASSET_CONFIG = {
         "fields": ["commodity","region","price","shock"],
         "default_weight": 1.0
     },
+    "EQ_OPT": {
+        "fields": ["symbol","strike","option_type","tenor","shock"],
+        "default_weight": 1.0
+    },
+    "FUT": {
+        "fields": ["contract","commodity","tenor","shock"],
+        "default_weight": 1.0
+    },
 }
 
 # ─── SEM Shock-Expansion Methods ─────────────────────────────────────
@@ -107,7 +115,9 @@ SHOCK_UNITS = {
     "FXSPOT":    "pct",
     "FXVOL":     "pct",
     "EQ":        "pct",
-    "CMD":       "pct"
+    "CMD":       "pct",
+    "EQ_OPT":    "pct",
+    "FUT":       "pct"
 }
 
 # Two separate baseline tables:

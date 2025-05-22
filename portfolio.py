@@ -18,6 +18,7 @@ class PortfolioIngestor:
     """Load and clean user portfolio files."""
 
     REQUIRED = {"ticker", "quantity", "price"}
+    OPTIONAL = {"duration", "dv01", "spread_dv01", "recovery_rate", "delta", "vega", "fx_rate", "currency"}
 
     def __init__(self, path_or_buf):
         self.raw = self._load_file(path_or_buf)
@@ -53,9 +54,13 @@ class PortfolioIngestor:
                 raise ValueError(f"Could not detect '{req}' column in {cols}")
             mapping[match] = req
         df = df.rename(columns=mapping)
-        df = df[list(self.REQUIRED)].copy()
+        optional = {c:c for c in df.columns if c in self.OPTIONAL}
+        df = df[list(self.REQUIRED) + list(optional.keys())].copy()
         df["quantity"] = pd.to_numeric(df.quantity, errors="coerce")
         df["price"] = pd.to_numeric(df.price, errors="coerce")
+        for col in self.OPTIONAL:
+            if col in df:
+                df[col] = pd.to_numeric(df[col], errors="coerce")
         df["ticker_norm"] = df.ticker.astype(str).str.upper().str.split(r"\s|\.|/").str[0]
         df["mkt_value"] = df.quantity * df.price
         tot = df["mkt_value"].sum()
