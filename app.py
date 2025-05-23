@@ -163,7 +163,18 @@ if st.button("▶️ Map Portfolio → RF"):
         mapper = RiskFactorMapper(un_df_port)
         mapped = mapper.map(pf)
         st.session_state.mapped_pf = mapped
-        st.success(f"Mapped {mapped.rf_code.notna().sum()} of {len(mapped)} positions")
+        pf_assets = (
+            mapped.merge(
+                un_df_port[["original", "asset"]],
+                left_on="rf_code",
+                right_on="original",
+                how="left",
+            )["asset"].dropna().unique().tolist()
+        )
+        st.session_state.pf_assets = pf_assets
+        st.success(
+            f"Mapped {mapped.rf_code.notna().sum()} of {len(mapped)} positions"
+        )
 
 if "mapped_pf" in st.session_state:
     st.subheader("Mapped Portfolio Preview")
@@ -188,9 +199,11 @@ sc["severity"] = st.selectbox("Severity",
     ["Low","Medium","High","Extreme"],
     index=["Low","Medium","High","Extreme"].index(sc.get("severity","Medium"))
 )
-sc["assets"]   = st.multiselect("Asset Classes",
-    list(ASSET_CONFIG.keys()),
-    default=sc.get("assets", list(ASSET_CONFIG.keys()))
+available_assets = st.session_state.get("pf_assets", list(ASSET_CONFIG.keys()))
+sc["assets"] = st.multiselect(
+    "Asset Classes",
+    available_assets,
+    default=sc.get("assets", available_assets),
 )
 
 # choose LLM engine

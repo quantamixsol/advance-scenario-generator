@@ -26,8 +26,19 @@ def apply_shocks(mapped_portfolio: pd.DataFrame, rf_df: pd.DataFrame, base_curre
     return pf
 
 def asset_pnl_breakdown(pnl_df: pd.DataFrame) -> pd.DataFrame:
-    """Return total PnL per asset class."""
-    return pnl_df.groupby("asset")["pnl"].sum().reset_index().rename(columns={"pnl": "asset_pnl"})
+    """Return total PnL per asset class.
+
+    Positions without an associated risk factor will have a missing ``asset``
+    value.  We still want to include these in the output so users can clearly
+    see the impact of unmapped positions.
+    """
+    df = pnl_df.copy()
+    df["asset"] = df["asset"].fillna("UNKNOWN")
+    return (
+        df.groupby("asset")["pnl"].sum()
+        .reset_index()
+        .rename(columns={"pnl": "asset_pnl"})
+    )
 
 def total_portfolio_pnl(pnl_df: pd.DataFrame) -> float:
     """Return total portfolio PnL."""

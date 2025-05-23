@@ -29,6 +29,18 @@ def _baseline_shocks(rf_df: pd.DataFrame, severity: str, overrides: dict | None 
     return rf_df
 
 
+def portfolio_assets(mapped: pd.DataFrame, univ: pd.DataFrame) -> list[str]:
+    """Return list of asset classes present in the mapped portfolio."""
+    return (
+        mapped.merge(
+            univ[["original", "asset"]],
+            left_on="rf_code",
+            right_on="original",
+            how="left",
+        )["asset"].dropna().unique().tolist()
+    )
+
+
 def run_pipeline(portfolio: str, universe: str, severity: str = "Medium", baseline_config: str | None = None) -> pd.DataFrame:
     """Full portfolio → RF → scenario PnL flow."""
     print("Loading portfolio...")
@@ -44,14 +56,7 @@ def run_pipeline(portfolio: str, universe: str, severity: str = "Medium", baseli
     mapped = mapper.map(pf)
 
     # determine which asset classes actually appear in the portfolio
-    pf_assets = (
-        mapped.merge(
-            univ[["original", "asset"]],
-            left_on="rf_code",
-            right_on="original",
-            how="left",
-        )["asset"].dropna().unique()
-    )
+    pf_assets = portfolio_assets(mapped, univ)
     # keep only risk factors for those assets
     univ_sub = univ[univ["asset"].isin(pf_assets)].reset_index(drop=True)
 
@@ -101,14 +106,7 @@ def run_scenario_pipeline(
     mapped = mapper.map(pf)
 
     # determine portfolio asset classes
-    pf_assets = (
-        mapped.merge(
-            univ[["original", "asset"]],
-            left_on="rf_code",
-            right_on="original",
-            how="left",
-        )["asset"].dropna().unique()
-    )
+    pf_assets = portfolio_assets(mapped, univ)
     univ_sub = univ[univ["asset"].isin(pf_assets)].reset_index(drop=True)
     px_sub = px_df[px_df["asset"].isin(pf_assets)].reset_index(drop=True)
 
