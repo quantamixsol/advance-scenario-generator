@@ -71,3 +71,22 @@ Equities, FX, and commodities apply percentage shocks to market value times
 delta.  Fixed income instruments use duration or DV01 if available.  CDS
 instruments accept `spread_dv01` inputs.  Volatility products can specify Vega to
 convert volatility point shocks into PnL.  See `pricing.py` for details.
+
+## LLM-Generated Scenario Flow
+
+`pipeline_flow.py` also exposes an end-to-end workflow that uses an LLM to
+create a scenario narrative and shock the mapped risk factors.  Provide a
+proxy file and specify a scenario name:
+
+```bash
+python pipeline_flow.py \
+    --portfolio mypf.csv \
+    --universe universe.csv \
+    --proxies proxies.csv \
+    --scenario_name "Rates Up" \
+    --user_input "aggressive central bank hikes"
+```
+
+The script will map portfolio tickers to the universe (falling back to proxies),
+generate a narrative, assign shocks via the LLM, apply pricing, and output the
+scenario PnL.

@@ -13,6 +13,7 @@ from embeddings import get_embedder
 from matching import proxy_match, build_fullcode_ann
 import faiss
 import json
+from generative import generate_narrative, refine_shocks_with_llm
 
 
 def _baseline_shocks(rf_df: pd.DataFrame, severity: str, overrides: dict | None = None) -> pd.DataFrame:
@@ -139,12 +140,66 @@ def run_scenario_pipeline(
     return pnl_df, pnl_breakdown, rf_df, shocks
 
 
+def run_generated_scenario(
+    portfolio: str,
+    universe: str,
+    proxies: str,
+    name: str,
+    scenario_type: str,
+    user_input: str,
+    severity: str = "Medium",
+    embedder: str = "baconnier",
+    llm_engine: str = "t5-small",
+) -> tuple[pd.DataFrame, pd.DataFrame, pd.DataFrame, str]:
+    """Complete portfolio → PnL pipeline with LLM-generated shocks."""
+    # 1) load portfolio
+    ing = PortfolioIngestor(portfolio)
+    pf = ing.get()
+
+    # 2) parse risk factor universe and proxy set
+    raw_univ = pd.read_csv(universe, header=None, names=["code"])
+    univ = parse_df(raw_univ)
+    raw_px = pd.read_csv(proxies, header=None, names=["code"])
+    px_df = parse_df(raw_px)
+
+    # 3) map tickers to risk factors, falling back to proxies
+    embed_texts, _, _ = get_embedder(embedder)
+    mapped = map_with_proxies(pf, univ, px_df, embed_texts)
+
+    combined = pd.concat([univ, px_df], ignore_index=True)
+    pf_assets = portfolio_assets(mapped, combined)
+    rf_codes = mapped["rf_code"].dropna().unique()
+    rf_df = combined[combined["original"].isin(rf_codes)].drop_duplicates("original").copy()
+
+    # 4) generate scenario narrative then derive shocks via LLM
+    narrative = generate_narrative(name, scenario_type, pf_assets, severity, user_input, engine=llm_engine)
+    factors = rf_df.to_dict("records")
+    shocks = refine_shocks_with_llm(narrative, factors, severity, engine=llm_engine)
+    rf_df["shock_pct"] = shocks
+
+    validate_parallel_shocks(rf_df)
+
+    # 5) apply shocks and compute PnL
+    pnl_df = apply_shocks(mapped, rf_df)
+    pnl_breakdown = asset_pnl_breakdown(pnl_df)
+    print(f"Total portfolio PnL: {total_portfolio_pnl(pnl_df):,.2f}")
+    if not pnl_breakdown.empty:
+        print("PnL by asset class:")
+        print(pnl_breakdown.to_string(index=False))
+
+    return pnl_df, pnl_breakdown, rf_df, narrative
+
+
 def main() -> None:
     p = argparse.ArgumentParser(description="End-to-end scenario pipeline")
     p.add_argument("--portfolio", required=True, help="Path to portfolio file")
     p.add_argument("--universe", required=True, help="Path to universe CSV")
     p.add_argument("--proxies", help="Path to proxies CSV")
     p.add_argument("--narrative", help="Scenario narrative")
+    p.add_argument("--scenario_name", help="Name of scenario for LLM generation")
+    p.add_argument("--scenario_type", default="adverse", help="Type of scenario")
+    p.add_argument("--user_input", default="", help="Additional user input")
+    p.add_argument("--llm_engine", default="t5-small", help="LLM engine")
     p.add_argument(
         "--severity", choices=["Low", "Medium", "High", "Extreme"], default="Medium"
     )
@@ -156,7 +211,19 @@ def main() -> None:
     p.add_argument("--top_k", type=int, default=10, help="ANN candidate size")
     args = p.parse_args()
 
-    if args.narrative and args.proxies:
+    if args.scenario_name and args.proxies:
+        pnl, breakdown, rf_df, _ = run_generated_scenario(
+            args.portfolio,
+            args.universe,
+            args.proxies,
+            args.scenario_name,
+            args.scenario_type,
+            args.user_input,
+            args.severity,
+            args.embedder,
+            args.llm_engine,
+        )
+    elif args.narrative and args.proxies:
         pnl, breakdown, rf_df, px_df = run_scenario_pipeline(
             args.portfolio,
             args.universe,
