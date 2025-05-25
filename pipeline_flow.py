@@ -10,7 +10,8 @@ from exposures import (
 )
 from config import SHOCK_UNITS, BASELINE_SHOCKS
 from embeddings import get_embedder
-from matching import proxy_match
+from matching import proxy_match, build_fullcode_ann
+import faiss
 import json
 
 
@@ -39,6 +40,20 @@ def portfolio_assets(mapped: pd.DataFrame, univ: pd.DataFrame) -> list[str]:
             how="left",
         )["asset"].dropna().unique().tolist()
     )
+
+
+def map_with_proxies(pf: pd.DataFrame, univ: pd.DataFrame, px_df: pd.DataFrame, embed_texts) -> pd.DataFrame:
+    """Map portfolio rows to risk factors using universe then fall back to proxies."""
+    mapper = RiskFactorMapper(univ)
+    mapped = mapper.map(pf)
+    missing = mapped["rf_code"].isna()
+    if missing.any() and not px_df.empty:
+        idx, embs = build_fullcode_ann(px_df, embed_texts)
+        q = embed_texts(mapped.loc[missing, "ticker_norm"].astype(str).tolist()).astype("float32")
+        D, I = idx.search(q, 1)
+        matches = [px_df.iloc[i]["original"] if i < len(px_df) else None for i in I[:, 0]]
+        mapped.loc[missing, "rf_code"] = matches
+    return mapped
 
 
 def run_pipeline(portfolio: str, universe: str, severity: str = "Medium", baseline_config: str | None = None) -> pd.DataFrame:
@@ -90,7 +105,7 @@ def run_scenario_pipeline(
     alpha: float = 0.6,
     top_k: int = 10,
 ) -> tuple[pd.DataFrame, pd.DataFrame, pd.DataFrame, pd.DataFrame]:
-    """End-to-end flow using scenario narrative and proxy matching."""
+    """End-to-end flow ensuring portfolio RFs are shocked."""
     print("Loading portfolio...")
     ing = PortfolioIngestor(portfolio)
     pf = ing.get()
@@ -101,31 +116,17 @@ def run_scenario_pipeline(
     raw_px = pd.read_csv(proxies, header=None, names=["code"])
     px_df = parse_df(raw_px)
 
-    print("Mapping portfolio tickers to risk factors…")
-    mapper = RiskFactorMapper(univ)
-    mapped = mapper.map(pf)
-
-    # determine portfolio asset classes
-    pf_assets = portfolio_assets(mapped, univ)
-    univ_sub = univ[univ["asset"].isin(pf_assets)].reset_index(drop=True)
-    px_sub = px_df[px_df["asset"].isin(pf_assets)].reset_index(drop=True)
-
-    print("Embedding texts and extracting risk factors…")
+    print("Embedding texts for mapping…")
     embed_texts, dim, _ = get_embedder(embedder)
-    rf_df, px_match = proxy_match(
-        px_sub,
-        univ_sub,
-        embed_texts,
-        dim,
-        alpha,
-        top_k,
-        narrative,
-        rf_k,
-        severity,
-    )
+    mapped = map_with_proxies(pf, univ, px_df, embed_texts)
 
-    # convert proxy matches to shock table for apply_shocks
-    shocks = px_match.rename(columns={"proxy": "original"})[["original", "asset", "shock_pct"]]
+    pf_assets = portfolio_assets(mapped, pd.concat([univ, px_df], ignore_index=True))
+    combined = pd.concat([univ, px_df], ignore_index=True)
+    rf_codes = mapped["rf_code"].dropna().unique()
+    rf_df = combined[combined["original"].isin(rf_codes)].drop_duplicates("original").copy()
+    rf_df = _baseline_shocks(rf_df, severity)
+    validate_parallel_shocks(rf_df)
+    shocks = rf_df[["original", "asset", "shock_pct"]]
 
     print("Applying shocks…")
     pnl_df = apply_shocks(mapped, shocks)
@@ -135,7 +136,7 @@ def run_scenario_pipeline(
         print("PnL by asset class:")
         print(pnl_breakdown.to_string(index=False))
 
-    return pnl_df, pnl_breakdown, rf_df, px_match
+    return pnl_df, pnl_breakdown, rf_df, shocks
 
 
 def main() -> None:
