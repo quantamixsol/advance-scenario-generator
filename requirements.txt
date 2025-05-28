@@ -12,3 +12,5 @@ openai
 google-generativeai
 vertexai
 dotenv
+fastapi
+uvicorn
