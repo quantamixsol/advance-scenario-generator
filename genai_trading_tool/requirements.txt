@@ -1,0 +1,14 @@
+streamlit
+fastapi
+transformers
+sentence-transformers
+openai
+google-generativeai
+vertexai
+faiss-cpu
+scikit-learn
+rapidfuzz
+plotly
+pandas
+numpy
+requests

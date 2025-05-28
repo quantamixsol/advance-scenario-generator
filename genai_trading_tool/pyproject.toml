@@ -1,0 +1,26 @@
+[tool.poetry]
+name = "genai_trading_tool"
+version = "0.1.0"
+description = "Generative AI trading tool"
+authors = [""]
+
+[tool.poetry.dependencies]
+python = "^3.11"
+streamlit = "*"
+fastapi = "*"
+transformers = "*"
+sentence-transformers = "*"
+openai = "*"
+google-generativeai = "*"
+vertexai = "*"
+faiss-cpu = "*"
+scikit-learn = "*"
+rapidfuzz = "*"
+plotly = "*"
+pandas = "*"
+numpy = "*"
+requests = "*"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
