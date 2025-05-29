@@ -56,8 +56,9 @@ def parse_row(code: str) -> dict:
     else:
         asset = a0
     out = {"asset": asset, "original": code}
+    field = ASSET_CONFIG.get(asset, {}).get("fields",[])
     # now unpack each field in order
-    for i, fld in enumerate(ASSET_CONFIG.get(asset, {})["fields"], start=1):
+    for i, fld in enumerate(field, start=1):
         out[fld] = parts[i] if i < len(parts) else ""
     return out
 
